@@ -108,8 +108,6 @@ const Dashboard = () => {
         </button>
       </div>
       
-      {/* SECTION: Analytics */}
-      <Analytics />
 
       {/* SECTION: Task Controls */}
       <div style={{ display: 'flex', gap: '10px', marginBottom: '20px', alignItems: 'center' }}>
@@ -163,6 +161,9 @@ const Dashboard = () => {
           </div>
         ))}
       </div>
+
+      {/* SECTION: Analytics */}
+      <Analytics />
 
       {/* The Modal Component */}
       {isModalOpen && (

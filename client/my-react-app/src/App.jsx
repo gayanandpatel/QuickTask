@@ -6,9 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import PrivateRoute from './components/PrivateRoute';
-
-// Dummy Dashboard Component
-const Dashboard = () => <h1>Welcome to Dashboard</h1>;
+import Dashboard from './pages/Dashboard';
 
 function App() {
   return (

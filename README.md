@@ -19,10 +19,11 @@ QuickTask/
 ├── analytics/   # Analytics, reports, and insights
 ├── client/      # Frontend application (UI)
 └── server/      # Backend APIs and database logic
-:
+```
+--- 
 
 ## 🚀 Getting Started
-Prerequisites
+**Prerequisites**
 
 Ensure the following tools are installed on your system before proceeding:
 

@@ -187,7 +187,7 @@ This phase sets up the **React frontend** using **Vite**, which will communicate
 ```bash
 cd ..
 ```
-**Step 3: Create the React application using Vite:
+**Step 3: Create the React application using Vite:**
 ```bash
 npm create vite@latest client -- --template react
 ```

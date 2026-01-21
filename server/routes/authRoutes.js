@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { genSalt, hash, compare } from 'bcryptjs';
-import { sign } from 'jsonwebtoken';
+import jwt from 'jsonwebtoken';
 import User from '../models/User.js';
 const router = Router();
 
@@ -13,7 +13,7 @@ router.post('/register', async (req, res) => {
     const { username, email, password } = req.body;
 
     // 1. Check if user already exists
-    const userExists = await findOne({ email });
+    const userExists = await User.findOne({ email });
     if (userExists) {
       return res.status(400).json({ message: 'User already exists' });
     }
@@ -58,7 +58,7 @@ router.post('/login', async (req, res) => {
     }
 
     // 3. Generate JWT Token
-    const token = sign(
+    const token = jwt.sign(
       { userId: user._id }, 
       process.env.JWT_SECRET, 
       { expiresIn: '1h' }

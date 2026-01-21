@@ -98,6 +98,10 @@ python3 --version
 
 ---
 
+## 🧪 Environment Setup
+
+The analytics service lives outside the Node.js server folder as an independent service.
+
 ## 📄 License
 
 This project is currently under development.

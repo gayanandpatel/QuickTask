@@ -216,6 +216,20 @@ Provides clean, professional toast notifications for user feedback.
 - **recharts:**
 Used to visualize productivity and analytics data with charts.
 
+**Step 6: Clean Up Boilerplate**
+
+To keep the frontend clean and minimal:
+
+1. Delete the default stylesheet:
+```bash
+src/App.css
+```
+
+2. Open src/main.jsx and remove the following line if you do not want default styles:
+```bash
+import './index.css';
+```
+ℹ️ You may keep index.css if you want basic CSS resets or global styles.
 
 
 ## 📄 License

@@ -66,4 +66,4 @@ License details will be added later.
 
 ## ✍️ Author
 
-Gayanand Patel
+**Gayanand Patel**

@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { genSalt, hash, compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
-import User, { findOne } from '../models/User.js'; // Import the User model you created earlier
+import User from '../models/User.js';
 const router = Router();
 
 // @route   POST /api/auth/register
@@ -46,7 +46,7 @@ router.post('/login', async (req, res) => {
     const { email, password } = req.body;
 
     // 1. Check if user exists
-    const user = await findOne({ email });
+    const user = await User.findOne({ email });
     if (!user) {
       return res.status(400).json({ message: 'Invalid credentials' });
     }

@@ -1,6 +1,6 @@
 import { Router } from 'express';
 const router = Router();
-import Task, { find, findOne, findOneAndDelete } from '../models/Task';
+import Task from '../models/Task.js';
 import authMiddleware from '../middleware/authMiddleware.js';
 
 // Apply authentication middleware to all routes in this router
@@ -67,7 +67,7 @@ router.get('/', async (req, res) => {
     }
 
     // Execute the query
-    const tasks = await find(query).sort(sortOptions);
+    const tasks = await Task.find(query).sort(sortOptions);
     res.json(tasks);
   } catch (error) {
     res.status(500).json({ message: 'Server error', error: error.message });
@@ -83,7 +83,7 @@ router.put('/:id', async (req, res) => {
     const { title, description, priority, status, dueDate } = req.body;
 
     // Find task by ID and verify it belongs to the logged-in user
-    let task = await findOne({ _id: req.params.id, userId: req.user.userId });
+    let task = await Task.findOne({ _id: req.params.id, userId: req.user.userId });
 
     if (!task) {
       return res.status(404).json({ message: 'Task not found' });
@@ -110,7 +110,7 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
   try {
     // Find and delete the task in one step, ensuring it belongs to the user
-    const task = await findOneAndDelete({ _id: req.params.id, userId: req.user.userId });
+    const task = await Task.findOneAndDelete({ _id: req.params.id, userId: req.user.userId });
 
     if (!task) {
       return res.status(404).json({ message: 'Task not found' });

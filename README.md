@@ -196,7 +196,25 @@ npm create vite@latest client -- --template react
 cd client
 npm install
 ```
+**Step 5: Install Frontend Dependencies**
 
+Install the required libraries for routing, API communication, notifications, and charts:
+```bash
+npm install axios react-router-dom react-toastify recharts
+```
+##### Library Overview
+
+**axios**
+Used for making HTTP requests to the Node.js and Python backend services.
+
+**react-router-dom**
+Enables client-side routing and navigation between pages.
+
+**react-toastify**
+Provides clean, professional toast notifications for user feedback.
+
+**recharts**
+Used to visualize productivity and analytics data with charts.
 
 
 

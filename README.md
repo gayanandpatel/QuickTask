@@ -23,37 +23,37 @@ QuickTask/
 --- 
 
 ## 🚀 Getting Started
-**Prerequisites**
+### Prerequisites
 
 Ensure the following tools are installed on your system before proceeding:
 
-Node.js (v18 or higher recommended)
+-Node.js (v18 or higher recommended)
 
-npm or yarn
+-npm or yarn
 
-MongoDB
+-MongoDB
 
-Local MongoDB installation or
+-Local MongoDB installation or
 
-MongoDB Atlas (cloud-hosted)
+-MongoDB Atlas (cloud-hosted)
 
-🖥️ Server Setup
+### 🖥️ Server Setup
 
 Navigate to the backend directory:
 ```bash
 cd server
-:
-Step 1: Install Mongoose
+```
+**Step 1: Install Mongoose**
 Installation
 
 Install Mongoose using npm:
 ```bash
 npm install mongoose
-:
+```
 Or using yarn:
 ```bash
 yarn add mongoose
-:
+```
 
 
 

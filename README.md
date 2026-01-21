@@ -42,7 +42,7 @@ Navigate to the backend directory:
 cd server
 ```
 **Step 1: Install Mongoose**
-Installation
+**Installation**
 
 Install Mongoose using npm:
 ```bash
@@ -53,7 +53,16 @@ Or using yarn:
 yarn add mongoose
 ```
 
-
+**Step 2: Install bcryptjs - to hash the password**
+**Installation**
+Using npm:
+```bash
+npm install bcryptjs
+```
+Or using yarn:
+```bash
+yarn add bcryptjs
+```
 
 
 ---

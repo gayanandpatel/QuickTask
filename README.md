@@ -67,7 +67,34 @@ Or using yarn:
 yarn add express mongoose jsonwebtoken cors dotenv bcryptjs
 ```
 
-**Step 3: Run Server**
+**Step 3: Run the Server.**
+
+---
+
+### 2. 📊 Analytics Service (Python Microservice)
+
+This phase introduces a **separate analytics service built with Python**, following a real-world **microservices architecture**.
+
+- **Node.js** handles real-time CRUD operations and APIs  
+- **Python** handles heavy data processing, analytics, and reporting  
+
+This separation improves scalability, performance, and maintainability.
+
+---
+
+## ✅ Prerequisites
+
+Ensure **Python** is installed on your system.
+
+Verify installation by running:
+
+```bash
+python --version
+```
+or
+```bash
+python3 --version
+```
 
 ---
 

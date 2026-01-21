@@ -204,16 +204,16 @@ npm install axios react-router-dom react-toastify recharts
 ```
 ##### Library Overview
 
-**axios**
+- **axios:**
 Used for making HTTP requests to the Node.js and Python backend services.
 
-**react-router-dom**
+- **react-router-dom:**
 Enables client-side routing and navigation between pages.
 
-**react-toastify**
+- **react-toastify:**
 Provides clean, professional toast notifications for user feedback.
 
-**recharts**
+- **recharts:**
 Used to visualize productivity and analytics data with charts.
 
 

@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { genSalt, hash, compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
-import User, { findOne } from '../models/User'; // Import the User model you created earlier
+import User, { findOne } from '../models/User.js'; // Import the User model you created earlier
 const router = Router();
 
 // @route   POST /api/auth/register

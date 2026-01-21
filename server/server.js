@@ -1,9 +1,9 @@
 import express, { json } from 'express';
 import { config } from 'dotenv';
 import cors from 'cors';
-import connectDB from './config/db';
-import authRoutes from './routes/authRoutes';
-import taskRoutes from './routes/taskRoutes';
+import connectDB from './config/db.js';
+import authRoutes from './routes/authRoutes.js';
+import taskRoutes from './routes/taskRoutes.js';
 
 // Load environment variables
 config();

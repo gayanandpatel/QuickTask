@@ -1,7 +1,7 @@
 import { Router } from 'express';
 const router = Router();
 import Task, { find, findOne, findOneAndDelete } from '../models/Task';
-import authMiddleware from '../middleware/authMiddleware';
+import authMiddleware from '../middleware/authMiddleware.js';
 
 // Apply authentication middleware to all routes in this router
 router.use(authMiddleware);

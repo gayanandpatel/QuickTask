@@ -135,6 +135,32 @@ Once activated, your terminal will show something like:
 
 This confirms the virtual environment is active.
 
+**Step 5: Install Analytics Service Dependencies**
+
+The analytics service requires several Python libraries to function as an independent backend service.
+
+These dependencies enable:
+- Running a lightweight web server
+- Communicating with MongoDB
+- Managing environment variables securely
+- Allowing cross-origin requests from the frontend
+
+#### Required Libraries
+
+- **Flask** – Web framework for building the analytics API
+- **PyMongo** – MongoDB driver for Python
+- **python-dotenv** – Loads environment variables from `.env`
+- **flask-cors** – Enables Cross-Origin Resource Sharing (CORS)
+
+#### Installation
+
+Ensure the **virtual environment is activated** before installing dependencies.
+
+Run the following command:
+
+```bash
+pip install flask pymongo python-dotenv flask-cors
+```
 
 
 

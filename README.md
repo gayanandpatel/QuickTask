@@ -1,5 +1,5 @@
 # QuickTask
-A modern task management application with analytics-driven insights.
+A robust task management application featuring a Node.js/Express backend, React frontend, and a dedicated Python microservice for data analytics. This project demonstrates a microservices architecture with authentication, CRUD operations, and data visualization.
 
 ---
 
@@ -8,6 +8,22 @@ A modern task management application with analytics-driven insights.
 **QuickTask** is a personal task management application designed to help users efficiently manage daily tasks while gaining meaningful insights through analytics.
 
 The application is being developed with a modular and scalable architecture, separating backend services, frontend UI, and analytics logic for long-term maintainability.
+
+---
+
+## 🚀 Features
+* **User Authentication:** Secure Login/Register with JWT & Bcrypt.
+* **Task Management:** Create, Read, Update, Delete (CRUD) tasks.
+* **Advanced Filtering:** Filter tasks by Status and Sort by Date/Priority.
+* **Analytics Dashboard:** Python-powered visualization of completion trends and stats.
+* **Responsive Design:** Optimized for desktop and mobile.
+
+--- 
+
+## 🛠️ Tech Stack
+* **Frontend:** React (Vite), React Router, Axios, Recharts, React-Toastify.
+* **Backend:** Node.js, Express, MongoDB (Mongoose), JWT.
+* **Analytics Service:** Python, Flask, PyMongo, Pandas.
 
 ---
 
@@ -23,23 +39,31 @@ QuickTask/
 --- 
 
 ## 🚀 Getting Started
-### Prerequisites
 
-Ensure the following tools are installed on your system before proceeding:
+## 📋 Prerequisites
+Ensure you have the following installed:
+* **Node.js** (v14 or higher)
+* **Python** (v3.8 or higher)
+* **MongoDB** (Local or Atlas Connection String)
 
-- Node.js (v18 or higher recommended)
+## ⚙️ Installation & Setup
 
-- npm or yarn
+### 1. Clone the Repository
+```bash
+git clone https://github.com/gayanandpatel/QuickTask.git
+cd QuickTask
 
-- MongoDB
-    - Local MongoDB installation or
-    - MongoDB Atlas (cloud-hosted)
-
-### 1. 🖥️ Server Setup
+### 1. 🖥️ Backend/Server Setup
 
 Navigate to the backend directory:
 ```bash
 cd server
+```
+**Create a .env file in the /server folder:**
+```bash
+PORT=5000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_secret_key
 ```
 **Step 1: Install Mongoose**
 
@@ -162,7 +186,13 @@ Run the following command:
 pip install flask pymongo python-dotenv flask-cors
 ```
 
-**Step 6: Start the Python Server**
+**Step 6: Create a .env file in the /analytics folder:**
+```bash
+PORT=5001
+MONGO_URI=your_mongodb_connection_string
+```
+
+**Step 7: Start the Python Server**
 
 ---
 
@@ -230,6 +260,34 @@ src/App.css
 import './index.css';
 ```
 ℹ️ You may keep index.css if you want basic CSS resets or global styles.
+
+
+### 🏃‍♂️ How to Run
+You need to run all three services simultaneously (in separate terminal windows).
+
+#### Terminal 1: Backend
+```bash
+cd server
+npm start
+```
+**OR**
+```bash
+node server.js
+Server runs on: http://localhost:5000
+```
+#### Terminal 2: Analytics
+```bash
+cd analytics
+python app.py
+```
+Analytics runs on: http://localhost:5001
+
+#### Terminal 3: Frontend
+```bash
+cd client
+npm run dev
+```
+Client runs on: http://localhost:5173
 
 --- 
 

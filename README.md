@@ -162,6 +162,31 @@ Run the following command:
 pip install flask pymongo python-dotenv flask-cors
 ```
 
+**Step 6: Start the Python Server**
+
+---
+
+## 3. 🖥️ Frontend Setup & Routing (React)
+
+This phase sets up the **React frontend** using **Vite**, which will communicate with:
+- The **Node.js backend** for core application logic
+- The **Python analytics service** for charts and insights
+
+---
+
+### Setup & Routing
+
+**Step 1: Initialize the React App**
+
+1. Stop all running servers  
+   (or open a new terminal split in VS Code).
+
+2. Navigate to the project root directory  
+   (the folder that contains `server` and `analytics`):
+
+```bash
+cd ..
+```
 
 
 ## 📄 License

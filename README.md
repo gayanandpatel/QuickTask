@@ -82,7 +82,7 @@ This separation improves scalability, performance, and maintainability.
 
 ---
 
-## ✅ Prerequisites
+#### ✅ Prerequisites
 
 Ensure **Python** is installed on your system.
 
@@ -98,7 +98,7 @@ python3 --version
 
 ---
 
-## 🧪 Environment Setup
+#### 🧪 Environment Setup
 
 The analytics service lives outside the Node.js server folder as an independent service.
 
@@ -166,7 +166,7 @@ pip install flask pymongo python-dotenv flask-cors
 
 ---
 
-## 3. 🖥️ Frontend Setup & Routing (React)
+### 3. 🖥️ Frontend Setup & Routing (React)
 
 This phase sets up the **React frontend** using **Vite**, which will communicate with:
 - The **Node.js backend** for core application logic
@@ -174,7 +174,7 @@ This phase sets up the **React frontend** using **Vite**, which will communicate
 
 ---
 
-### Setup & Routing
+#### Setup & Routing
 
 **Step 1: Initialize the React App**
 

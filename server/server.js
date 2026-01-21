@@ -3,6 +3,7 @@ import { config } from 'dotenv';
 import cors from 'cors';
 import connectDB from './config/db';
 import authRoutes from './routes/authRoutes';
+import taskRoutes from './routes/taskRoutes';
 
 // Load environment variables
 config();
@@ -16,6 +17,7 @@ const app = express();
 app.use(cors()); // Allows frontend to communicate with backend
 app.use(json()); // Allows the backend to understand JSON data
 app.use('/api/auth', authRoutes); // Auth Routes
+app.use('/api/tasks', taskRoutes); // Task Routes
 
 // A simple test route to ensure server is working
 app.get('/', (req, res) => {

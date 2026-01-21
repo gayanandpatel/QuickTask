@@ -42,6 +42,7 @@ Navigate to the backend directory:
 cd server
 ```
 **Step 1: Install Mongoose**
+
 **Installation**
 
 Install Mongoose using npm:
@@ -54,6 +55,7 @@ yarn add mongoose
 ```
 
 **Step 2: Install the required libraries:**
+
 **Installation**
 
 Using npm:

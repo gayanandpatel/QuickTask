@@ -191,6 +191,15 @@ cd ..
 ```bash
 npm create vite@latest client -- --template react
 ```
+**Step 4: Navigate into the client directory and install dependencies:**
+```bash
+cd client
+npm install
+```
+
+
+
+
 ## 📄 License
 
 This project is currently under development.

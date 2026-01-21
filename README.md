@@ -107,6 +107,11 @@ The analytics service lives outside the Node.js server folder as an independent 
 ```bash
 Ctrl + C
 ```
+**Step 2: Navigate back to the project root (where server and client exist):**
+```bash
+cd ..
+```
+
 **Step 3: Navigate to the analytics directory:**
 ```bash
 cd analytics

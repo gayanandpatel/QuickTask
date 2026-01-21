@@ -31,7 +31,7 @@ Ensure the following tools are installed on your system before proceeding:
 
 - npm or yarn
 
-- MongoDB
+- **MongoDB**
 
 - Local MongoDB installation or
 

@@ -231,6 +231,7 @@ import './index.css';
 ```
 ℹ️ You may keep index.css if you want basic CSS resets or global styles.
 
+--- 
 
 ## 📄 License
 

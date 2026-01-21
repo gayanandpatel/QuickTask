@@ -53,16 +53,16 @@ Or using yarn:
 yarn add mongoose
 ```
 
-**Step 2: Install bcryptjs - to hash the password**
+**Step 2: Install the required libraries:**
 **Installation**
 
 Using npm:
 ```bash
-npm install bcryptjs
+npm install express mongoose jsonwebtoken cors dotenv bcryptjs
 ```
 Or using yarn:
 ```bash
-yarn add bcryptjs
+yarn add express mongoose jsonwebtoken cors dotenv bcryptjs
 ```
 
 

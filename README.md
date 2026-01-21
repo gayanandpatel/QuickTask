@@ -67,6 +67,7 @@ Or using yarn:
 yarn add express mongoose jsonwebtoken cors dotenv bcryptjs
 ```
 
+**Step 3: Run Server**
 
 ---
 

@@ -102,6 +102,17 @@ python3 --version
 
 The analytics service lives outside the Node.js server folder as an independent service.
 
+**Step 1: Stop the Node.js server if it is running:**
+
+```bash
+Ctrl + C
+```
+**Step 3: Navigate to the analytics directory:**
+```bash
+cd analytics
+```
+
+
 ## 📄 License
 
 This project is currently under development.

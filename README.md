@@ -117,6 +117,26 @@ cd ..
 cd analytics
 ```
 
+**Step 4: Create a Python Virtual Environment (venv)**
+
+A virtual environment isolates Python dependencies so they do not affect global system packages.
+
+```bash
+python -m venv venv
+```
+Activate the virtual environment:
+```bash
+venv\Scripts\activate
+```
+Once activated, your terminal will show something like:
+```bash
+(venv)
+```
+
+This confirms the virtual environment is active.
+
+
+
 
 ## 📄 License
 

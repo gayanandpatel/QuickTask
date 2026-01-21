@@ -31,11 +31,9 @@ Ensure the following tools are installed on your system before proceeding:
 
 - npm or yarn
 
-- **MongoDB**
-
-- Local MongoDB installation or
-
-- MongoDB Atlas (cloud-hosted)
+- MongoDB
+    - Local MongoDB installation or
+    - MongoDB Atlas (cloud-hosted)
 
 ### 1. 🖥️ Server Setup
 

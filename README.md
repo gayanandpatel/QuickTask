@@ -37,7 +37,7 @@ Ensure the following tools are installed on your system before proceeding:
 
 - MongoDB Atlas (cloud-hosted)
 
-### 🖥️ Server Setup
+### 1. 🖥️ Server Setup
 
 Navigate to the backend directory:
 ```bash

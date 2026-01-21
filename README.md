@@ -55,6 +55,7 @@ yarn add mongoose
 
 **Step 2: Install bcryptjs - to hash the password**
 **Installation**
+
 Using npm:
 ```bash
 npm install bcryptjs

@@ -27,15 +27,15 @@ QuickTask/
 
 Ensure the following tools are installed on your system before proceeding:
 
--Node.js (v18 or higher recommended)
+- Node.js (v18 or higher recommended)
 
--npm or yarn
+- npm or yarn
 
--MongoDB
+- MongoDB
 
--Local MongoDB installation or
+- Local MongoDB installation or
 
--MongoDB Atlas (cloud-hosted)
+- MongoDB Atlas (cloud-hosted)
 
 ### 🖥️ Server Setup
 

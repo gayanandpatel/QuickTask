@@ -51,7 +51,7 @@ QuickTask/
 └── server/      # 🟢 Backend API (Node.js + Express)
                  # Handles: Auth (JWT), Database (MongoDB), CRUD API
 ```
-🚀 Features
+## 🚀 Features
 🔐 Secure Authentication: User Login & Registration powered by JWT & Bcrypt.
 
 📝 Task Management: Full CRUD capabilities (Create, Read, Update, Delete).

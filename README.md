@@ -23,11 +23,11 @@
   - [Backend (Node.js)](#backend-node)
   - [Analytics (Python)](#analytic-python)
   - [Frontend (React)](#frontend-react)
-- [Running the Application](#-running-the-application)
+- [Running the Application](#run-application)
 - [Seeding Data](#-seeding-data-optional)
 - [Screenshots](#-screenshots)
 - [Troubleshooting](#-troubleshooting)
-- [Author](#-author)
+- [Author](#author)
 
 ---s
 
@@ -169,7 +169,7 @@ npm install
 ```
 3. **(Optional) Clean up default styles if you haven't already.**
 
-## 🏃‍♂️ Running the Application
+## 🏃‍♂️ Running the Application <a id = "run-application"> </a>
 To run the full application, you need to open three separate terminal windows/tabs.
 
 ### Terminal 1: Core Backend
@@ -225,7 +225,7 @@ Visualizing task completion rates and productivity trends.
 
    - Check that ports 5000, 5001, and 5173 are not blocked by firewalls.
 
-## ✍️ Author
+## ✍️ Author <a id = "author"> </a>
 ### Gayanand Patel
 
 - GitHub: [gayanandpatel](https://github.com/gayanandpatel)

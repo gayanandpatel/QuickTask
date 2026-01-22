@@ -154,79 +154,75 @@ PORT=5001
 MONGO_URI=mongodb+srv://<your_user>:<your_password>@<your_cluster>.mongodb.net/
 ```
 ### 3. ⚛️ Frontend Setup (React)
-Navigate to the client directory:
-
-Bash
-
+1. **Navigate to the client directory:**
+```bash
 cd ../client
-Install dependencies:
-
-Bash
-
+```
+2. **Install dependencies:**
+```bash
 npm install
-(Optional) Clean up default styles if you haven't already.
+```
+3. **(Optional) Clean up default styles if you haven't already.**
 
-🏃‍♂️ Running the Application
+## 🏃‍♂️ Running the Application
 To run the full application, you need to open three separate terminal windows/tabs.
 
-Terminal 1: Core Backend
-Bash
-
+### Terminal 1: Core Backend
+```bash
 cd server
 npm start
 # Runs on: http://localhost:5000
-Terminal 2: Analytics Service
+```
+### Terminal 2: Analytics Service
 (Make sure your virtual environment is active)
-
-Bash
-
+```bash
 cd analytics
 python app.py
 # Runs on: http://localhost:5001
-Terminal 3: Frontend Client
-Bash
-
+```
+### Terminal 3: Frontend Client
+```bash
 cd client
 npm run dev
 # Runs on: http://localhost:5173
-🧪 Seeding Data (Optional)
+```
+## 🧪 Seeding Data (Optional)
 If you want to quickly populate your database with a test user and sample tasks to see the analytics in action:
 
-Open a terminal in the server directory.
+1. Open a terminal in the `server` directory.
 
-Run the seed script:
-
-Bash
-
+2. Run the seed script:
+```bash
 node seed.js
-Login Credentials:
+```
+3. Login Credentials:
 
-Email: reviewer@example.com
+- Email: `reviewer@example.com`
 
-Password: password123
+- Password: `password123`
 
-📸 Screenshots
-Analytics Dashboard
+## 📸 Screenshots
+### Analytics Dashboard
 Visualizing task completion rates and productivity trends.
 
 (Place your screenshot image in a 'screenshots' folder in the root directory)
 
-🔧 Troubleshooting
-Analytics Charts show "0" data:
+## 🔧 Troubleshooting
+- ### Analytics Charts show "0" data:
 
-Ensure both server/.env and analytics/.env point to the exact same database name (e.g., /prepnec_db).
+   - Ensure both `server/.env` and `analytics/.env` point to the exact same database name (e.g., `/test`).
 
-Log out and log back in to ensure your User ID token is fresh.
+   - Log out and log back in to ensure your User ID token is fresh.
 
-Connection Refused:
+- ### Connection Refused:
 
-Ensure MongoDB is running.
+   - Ensure MongoDB is running.
 
-Check that ports 5000, 5001, and 5173 are not blocked by firewalls.
+   - Check that ports 5000, 5001, and 5173 are not blocked by firewalls.
 
-✍️ Author
-Gayanand Patel
+## ✍️ Author
+### Gayanand Patel
 
-GitHub: gayanandpatel
+- GitHub: gayanandpatel
 
-Project: QuickTask
+- Project: QuickTask

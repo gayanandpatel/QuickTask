@@ -29,7 +29,6 @@
 - [Troubleshooting](#-troubleshooting)
 - [Author](#author)
 
----s
 
 ## 📖 Overview
 

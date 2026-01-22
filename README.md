@@ -96,73 +96,64 @@ QuickTask/
 ## 📋 Prerequisites
 Ensure you have the following installed on your machine:
 
-Node.js (v14 or higher)
+- Node.js (v14 or higher)
 
-Python (v3.8 or higher)
+- Python (v3.8 or higher)
 
-MongoDB (Local instance or MongoDB Atlas Connection String)
+- MongoDB (Local instance or MongoDB Atlas Connection String)
 
-Git
+- Git
 
-⚙️ Installation & Setup
+## ⚙️ Installation & Setup
 Clone the repository to get started:
-
-Bash
-
+```bash
 git clone [https://github.com/gayanandpatel/QuickTask.git](https://github.com/gayanandpatel/QuickTask.git)
 cd QuickTask
-1. 🖥️ Backend (Node.js) Setup
-Navigate to the server directory:
-
-Bash
-
+```
+### 1. 🖥️ Backend (Node.js) Setup
+1. **Navigate to the server directory:**
+```bash
 cd server
-Install dependencies:
-
-Bash
-
+```
+2. **Install dependencies:**
+```bash
 npm install
-Configuration: Create a .env file in the /server folder:
-
-Code snippet
-
+```
+3. **Configuration:** Create a .env file in the /server folder:
+```bash
 PORT=5000
-MONGO_URI=mongodb+srv://<your_user>:<your_password>@<your_cluster>.mongodb.net/prepnec_db
+MONGO_URI=mongodb+srv://<your_user>:<your_password>@<your_cluster>.mongodb.net/
 JWT_SECRET=your_super_secret_key_123
-2. 📊 Analytics Service (Python) Setup
-Navigate to the analytics directory:
-
-Bash
-
+```
+### 2. 📊 Analytics Service (Python) Setup
+1. **Navigate to the analytics directory:**
+```bash
 cd ../analytics
-Create and activate a Virtual Environment:
-
-Windows:
-
-Bash
-
+```
+2. **Create and activate a Virtual Environment:**
+- **Windows:**
+```bash
 python -m venv venv
 venv\Scripts\activate
-Mac/Linux:
-
-Bash
-
+```
+- **Mac/Linux:**
+```bash
 python3 -m venv venv
 source venv/bin/activate
-Install Python dependencies:
-
-Bash
-
+```
+3. **Install Python dependencies:**
+```bash
 pip install flask pymongo python-dotenv flask-cors
-Configuration: Create a .env file in the /analytics folder.
+```
+4. **Configuration: Create a .env file in the /analytics folder.**
 
-Note: Ensure the MONGO_URI matches the one in the Server exactly.
+> Note: Ensure the MONGO_URI matches the one in the Server exactly.
 
-Code snippet
-
+```bash
 PORT=5001
-MONGO_URI=mongodb+srv://<your_user>:<your_password>@<your_cluster>.mongodb.net/prepnec_db
-3. ⚛️ Frontend Setup (React)
+MONGO_URI=mongodb+srv://<your_user>:<your_password>@<your_cluster>.mongodb.net/
+```
+3. ### ⚛️ Frontend Setup (React)
 Navigate to the client directory:
 
 Bash

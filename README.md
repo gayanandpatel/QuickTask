@@ -197,9 +197,9 @@ node seed.js
 ```
 3. Login Credentials:
 
-- Email: `reviewer@example.com`
+   - Email: `reviewer@example.com`
 
-- Password: `password123`
+   - Password: `password123`
 
 ## 📸 Screenshots
 ### Analytics Dashboard

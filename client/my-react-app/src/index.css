@@ -1,0 +1,54 @@
+/* src/styles/globals.css */
+:root {
+  /* --- LIGHT THEME (Default) --- */
+  --color-primary: #6366f1;       /* Indigo 500 */
+  --color-primary-hover: #4f46e5; /* Indigo 600 */
+  --color-secondary: #0f172a;     /* Slate 900 (Headings) */
+  --color-accent: #10b981;        /* Emerald 500 */
+  
+  --bg-body: #f8fafc;             /* Slate 50 */
+  --bg-card: #ffffff;             /* White */
+  --bg-hover: #f1f5f9;            /* Slate 100 */
+  
+  --text-main: #1e293b;           /* Slate 800 */
+  --text-muted: #64748b;          /* Slate 500 */
+  --text-inverse: #ffffff;
+  
+  --border-color: #e2e8f0;        /* Slate 200 */
+  
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  
+  --transition-fast: 0.2s ease-in-out;
+}
+
+/* --- DARK THEME OVERRIDES --- */
+[data-theme='dark'] {
+  --color-primary: #818cf8;       /* Indigo 400 (Lighter for dark mode) */
+  --color-primary-hover: #6366f1; /* Indigo 500 */
+  --color-secondary: #f8fafc;     /* Slate 50 (Headings become light) */
+  
+  --bg-body: #0f172a;             /* Slate 900 */
+  --bg-card: #1e293b;             /* Slate 800 */
+  --bg-hover: #334155;            /* Slate 700 */
+  
+  --text-main: #e2e8f0;           /* Slate 200 */
+  --text-muted: #94a3b8;          /* Slate 400 */
+  
+  --border-color: #334155;        /* Slate 700 */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: var(--bg-body);
+  color: var(--text-main);
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth Theme Transition */
+}
+
+button { cursor: pointer; border: none; font-family: inherit; }

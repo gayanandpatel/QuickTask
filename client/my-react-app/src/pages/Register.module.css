@@ -1,0 +1,185 @@
+/* src/pages/Register.module.css */
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-body);
+  /* Consistent background pattern */
+  background-image: radial-gradient(circle at top right, rgba(99, 102, 241, 0.1) 0%, transparent 40%),
+                    radial-gradient(circle at bottom left, rgba(16, 185, 129, 0.1) 0%, transparent 40%);
+  padding: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.card {
+  background-color: var(--bg-card);
+  width: 100%;
+  max-width: 450px; /* Slightly wider for registration */
+  padding: 2.5rem;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border-color);
+  animation: slideUp 0.5s ease-out;
+}
+
+/* --- Header Section --- */
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--color-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.brandSpan {
+  color: var(--color-primary);
+}
+
+.subtitle {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+/* --- Form Elements --- */
+.formGroup {
+  margin-bottom: 1.25rem;
+}
+
+.label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 0.5rem;
+}
+
+/* Standard Input */
+.input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  transition: all var(--transition-fast);
+  background-color: var(--bg-body);
+  color: var(--text-main);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+  background-color: var(--bg-card);
+}
+
+/* --- Password Specifics --- */
+.passwordWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.passwordInput {
+  width: 100%;
+  padding: 0.75rem 2.5rem 0.75rem 1rem; /* Right padding for icon */
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  transition: all var(--transition-fast);
+  background-color: var(--bg-body);
+  color: var(--text-main);
+}
+
+.passwordInput:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+  background-color: var(--bg-card);
+}
+
+.eyeBtn {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+}
+
+.eyeBtn:hover {
+  color: var(--color-primary);
+}
+
+/* --- Actions --- */
+.submitBtn {
+  width: 100%;
+  padding: 0.875rem;
+  background-color: var(--color-primary);
+  color: white;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  margin-top: 1rem;
+  transition: background-color var(--transition-fast);
+  font-size: 1rem;
+}
+
+.submitBtn:hover {
+  background-color: var(--color-primary-hover);
+}
+
+.submitBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* --- Footer Links --- */
+.footer {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.link {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.backLink {
+  color: var(--text-muted);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  transition: color var(--transition-fast);
+}
+
+.backLink:hover {
+  color: var(--text-main);
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

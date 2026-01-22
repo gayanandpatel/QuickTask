@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import styles from './TaskModal.module.css';
 
 const initialFormState = {
   title: '',
@@ -9,14 +10,17 @@ const initialFormState = {
 };
 
 const TaskModal = ({ isOpen, onClose, onSave, taskToEdit }) => {
-  // Initialize form data state
-  const [formData, setFormData] = useState(() => {
+  const [formData, setFormData] = useState(initialFormState);
+
+  // Update state when taskToEdit changes or modal opens
+  useEffect(() => {
     if (taskToEdit) {
       const formattedDate = taskToEdit.dueDate ? taskToEdit.dueDate.split('T')[0] : '';
-      return { ...taskToEdit, dueDate: formattedDate };
+      setFormData({ ...taskToEdit, dueDate: formattedDate });
+    } else {
+      setFormData(initialFormState);
     }
-    return initialFormState;
-  });
+  }, [taskToEdit, isOpen]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -27,87 +31,105 @@ const TaskModal = ({ isOpen, onClose, onSave, taskToEdit }) => {
     onSave(formData);
   };
 
-// Render nothing if modal is not open
   if (!isOpen) return null;
 
   return (
-    <div style={styles.overlay}>
-      <div style={styles.modal}>
-        <h2>{taskToEdit ? 'Edit Task' : 'Add New Task'}</h2>
+    <div className={styles.overlay} onClick={onClose}>
+      {/* stopPropagation prevents closing when clicking inside the modal */}
+      <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
+        
+        <div className={styles.header}>
+          <h2 className={styles.title}>
+            {taskToEdit ? 'Edit Task' : 'Create New Task'}
+          </h2>
+        </div>
+
         <form onSubmit={handleSubmit}>
           
-          <div style={styles.group}>
-            <label>Title *</label>
+          <div className={styles.group}>
+            <label className={styles.label}>Title <span style={{color: 'red'}}>*</span></label>
             <input 
+              className={styles.input}
               name="title" 
               value={formData.title} 
               onChange={handleChange} 
+              placeholder="e.g. Review Q3 Financials"
               required 
-              style={styles.input}
+              autoFocus
             />
           </div>
 
-          <div style={styles.group}>
-            <label>Description</label>
+          <div className={styles.group}>
+            <label className={styles.label}>Description</label>
             <textarea 
+              className={styles.textarea}
               name="description" 
               value={formData.description} 
               onChange={handleChange} 
-              style={styles.input}
+              placeholder="Add details about this task..."
             />
           </div>
 
-          <div style={styles.row}>
-            <div style={styles.group}>
-              <label>Priority</label>
-              <select name="priority" value={formData.priority} onChange={handleChange} style={styles.input}>
-                <option>Low</option>
-                <option>Medium</option>
-                <option>High</option>
+          <div className={styles.row}>
+            <div className={styles.group}>
+              <label className={styles.label}>Priority</label>
+              <select 
+                className={styles.select}
+                name="priority" 
+                value={formData.priority} 
+                onChange={handleChange}
+              >
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
               </select>
             </div>
 
-            <div style={styles.group}>
-              <label>Status</label>
-              <select name="status" value={formData.status} onChange={handleChange} style={styles.input}>
-                <option>Todo</option>
-                <option>In Progress</option>
-                <option>Completed</option>
+            <div className={styles.group}>
+              <label className={styles.label}>Status</label>
+              <select 
+                className={styles.select}
+                name="status" 
+                value={formData.status} 
+                onChange={handleChange}
+              >
+                <option value="Todo">To Do</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Completed">Completed</option>
               </select>
             </div>
           </div>
 
-          <div style={styles.group}>
-            <label>Due Date</label>
+          <div className={styles.group}>
+            <label className={styles.label}>Due Date</label>
             <input 
+              className={styles.input}
               type="date" 
               name="dueDate" 
               value={formData.dueDate} 
               onChange={handleChange} 
-              style={styles.input}
             />
           </div>
 
-          <div style={styles.actions}>
-            <button type="button" onClick={onClose} style={styles.cancelBtn}>Cancel</button>
-            <button type="submit" style={styles.saveBtn}>Save</button>
+          <div className={styles.actions}>
+            <button 
+              type="button" 
+              onClick={onClose} 
+              className={styles.btnCancel}
+            >
+              Cancel
+            </button>
+            <button 
+              type="submit" 
+              className={styles.btnSave}
+            >
+              {taskToEdit ? 'Update Task' : 'Create Task'}
+            </button>
           </div>
         </form>
       </div>
     </div>
   );
-};
-
-// Styles
-const styles = {
-  overlay: { position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.5)', display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: 1000 },
-  modal: { backgroundColor: 'white', padding: '20px', borderRadius: '8px', width: '400px', maxWidth: '90%' },
-  group: { marginBottom: '15px' },
-  row: { display: 'flex', gap: '10px' },
-  input: { width: '100%', padding: '8px', marginTop: '5px', boxSizing: 'border-box' },
-  actions: { display: 'flex', justifyContent: 'flex-end', gap: '10px', marginTop: '20px' },
-  saveBtn: { padding: '8px 16px', backgroundColor: '#007bff', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' },
-  cancelBtn: { padding: '8px 16px', backgroundColor: '#6c757d', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }
 };
 
 export default TaskModal;

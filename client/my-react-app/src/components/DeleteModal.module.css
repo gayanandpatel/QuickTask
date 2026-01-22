@@ -1,0 +1,109 @@
+/* src/components/DeleteModal.module.css */
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(15, 23, 42, 0.6); /* Slate 900 with opacity */
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1100; /* Higher than TaskModal if necessary */
+  animation: fadeIn 0.2s ease-out;
+}
+
+.modal {
+  background-color: white;
+  padding: 2rem;
+  border-radius: var(--radius-lg);
+  width: 100%;
+  max-width: 400px; /* Smaller width for alerts */
+  box-shadow: var(--shadow-lg);
+  border: 1px solid #e2e8f0;
+  text-align: center;
+  animation: scaleUp 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Icon Container */
+.iconWrapper {
+  width: 3rem;
+  height: 3rem;
+  background-color: #fee2e2; /* Red 100 */
+  color: #ef4444; /* Red 500 */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem auto;
+}
+
+.title {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+}
+
+.description {
+  margin: 0 0 2rem 0;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.taskName {
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+/* Buttons */
+.actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.btnCancel, .btnDelete {
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  border: 1px solid transparent;
+}
+
+.btnCancel {
+  background-color: white;
+  border-color: #cbd5e1;
+  color: var(--text-main);
+}
+
+.btnCancel:hover {
+  background-color: #f1f5f9;
+}
+
+.btnDelete {
+  background-color: #ef4444; /* Red 500 */
+  color: white;
+  box-shadow: 0 4px 6px -1px rgba(239, 68, 68, 0.3);
+}
+
+.btnDelete:hover {
+  background-color: #dc2626; /* Red 600 */
+  transform: translateY(-1px);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleUp {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}

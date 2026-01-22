@@ -1,0 +1,48 @@
+/* src/components/ThemeToggle.module.css */
+
+.container {
+  position: relative;
+  width: 52px;
+  height: 28px;
+  background-color: #e2e8f0; /* Light mode track */
+  border-radius: 50px;
+  cursor: pointer;
+  padding: 2px;
+  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--border-color);
+}
+
+/* Dark mode track color */
+:global([data-theme='dark']) .container {
+  background-color: #334155; /* Slate 700 */
+}
+
+/* The sliding circle */
+.thumb {
+  width: 22px;
+  height: 22px;
+  background-color: white;
+  border-radius: 50%;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  transform: translateX(0);
+  transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fbbf24; /* Sun Color */
+}
+
+/* Move thumb when dark */
+:global([data-theme='dark']) .thumb {
+  transform: translateX(24px);
+  background-color: #0f172a; /* Slate 900 */
+  color: #fbbf24; /* Moon Color */
+}
+
+/* Icons */
+.icon {
+  width: 14px;
+  height: 14px;
+}

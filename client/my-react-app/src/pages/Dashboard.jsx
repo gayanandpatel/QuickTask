@@ -1,22 +1,37 @@
 import { useEffect, useState } from 'react';
-import api from '../api'; 
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import api from '../api'; 
+
+// Components
 import TaskModal from '../components/TaskModal';
+import DeleteModal from '../components/DeleteModal';
 import Analytics from '../components/Analytics';
+import ViewToggle from '../components/ViewToggle';
+import ThemeToggle from '../components/ThemeToggle';
+
+import styles from './Dashboard.module.css';
 
 const Dashboard = () => {
+  // --- STATE MANAGEMENT ---
   const [tasks, setTasks] = useState([]);
   const [filterStatus, setFilterStatus] = useState(''); 
   const [sortBy, setSortBy] = useState('createdAt'); 
+  const [searchQuery, setSearchQuery] = useState(''); // 1. New Search State
   
-// Used to trigger re-fetching tasks
   const [refreshKey, setRefreshKey] = useState(0); 
 
-  // Modal State
+  // UI State
+  const [currentView, setCurrentView] = useState('tasks');
   const [isModalOpen, setIsModalOpen] = useState(false);
+  
+  // Selection State
   const [editingTask, setEditingTask] = useState(null);
+  const [taskToDelete, setTaskToDelete] = useState(null);
+  
+  const navigate = useNavigate();
 
-// 1. Fetch Tasks
+  // --- DATA FETCHING ---
   useEffect(() => {
     const loadTasks = async () => {
       try {
@@ -30,56 +45,57 @@ const Dashboard = () => {
         toast.error('Failed to load tasks');
       }
     };
-
     loadTasks();
   }, [filterStatus, sortBy, refreshKey]);
 
-// Function to trigger task reload
-  const refreshTasks = () => {
-    setRefreshKey(prev => prev + 1);
-  };
+  // --- 2. FILTER LOGIC (Instant Search) ---
+  // We filter the already fetched 'tasks' array based on the search query
+  const filteredTasks = tasks.filter(task => 
+    task.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
-  // 2. Delete Task
-  const handleDelete = async (id) => {
-    if (window.confirm('Are you sure you want to delete this task?')) {
-      try {
-        await api.delete(`/tasks/${id}`);
-        toast.success('Task Deleted');
-        refreshTasks();
-      } catch (err) {
-        console.error(err);
-        toast.error('Failed to delete');
-      }
+  // --- ACTIONS ---
+  const refreshData = () => setRefreshKey(prev => prev + 1);
+
+  const initiateDelete = (task) => setTaskToDelete(task);
+  
+  const confirmDelete = async () => {
+    if (!taskToDelete) return;
+    try {
+      await api.delete(`/tasks/${taskToDelete._id}`);
+      toast.success('Task Deleted');
+      refreshData();
+    } catch (err) {
+      console.error(err);
+      toast.error('Failed to delete');
+    } finally {
+      setTaskToDelete(null); 
     }
   };
 
-// 3. Save Task (Create/Update)
   const handleSave = async (taskData) => {
     try {
       if (editingTask) {
-        
         await api.put(`/tasks/${editingTask._id}`, taskData);
         toast.success('Task Updated');
       } else {
-        
         await api.post('/tasks', taskData);
         toast.success('Task Created');
       }
       setIsModalOpen(false);
       setEditingTask(null);
-      refreshTasks();
+      refreshData();
     } catch (err) {
       console.error(err);
       toast.error('Failed to save task');
     }
   };
 
-  // 4. Quick Status Update
   const handleStatusChange = async (task, newStatus) => {
     try {
       await api.put(`/tasks/${task._id}`, { ...task, status: newStatus });
-      toast.success('Status Updated');
-      refreshTasks();
+      toast.success(`Moved to ${newStatus}`);
+      refreshData();
     } catch (err) {
       console.error(err);
       toast.error('Update failed');
@@ -96,76 +112,176 @@ const Dashboard = () => {
     setIsModalOpen(true);
   };
 
+  const handleLogout = () => {
+    localStorage.clear();
+    navigate('/login');
+  };
+
+  const getPriorityColor = (priority) => {
+    switch(priority) {
+      case 'High': return '#ef4444';
+      case 'Medium': return '#f59e0b';
+      case 'Low': return '#10b981';
+      default: return '#cbd5e1'; 
+    }
+  };
+
   return (
-    <div style={{ padding: '20px', maxWidth: '1000px', margin: '0 auto' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <h1>Task Dashboard</h1>
-        <button onClick={() => {
-            localStorage.clear();
-            window.location.href = '/login';
-          }} style={{ backgroundColor: '#dc3545', color: 'white', border: 'none', padding: '5px 10px', cursor: 'pointer' }}>
-          Logout
-        </button>
-      </div>
+    <div className={styles.container}>
       
+      <header className={styles.header}>
+        <div className={styles.brand}>
+          ⚡ Quick<span>Task</span>
+        </div>
+        <div className={styles.headerActions}>
+          <ThemeToggle />
+          <button onClick={handleLogout} className={styles.logoutBtn}>
+            Sign Out
+          </button>
+        </div>
+      </header>
 
-      {/* SECTION: Task Controls */}
-      <div style={{ display: 'flex', gap: '10px', marginBottom: '20px', alignItems: 'center' }}>
-        <button onClick={openCreateModal} style={{ padding: '10px 20px', backgroundColor: '#28a745', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>
-          + Add New Task
-        </button>
+      <main className={styles.main}>
         
-        {/* Filter Dropdown */}
-        <select value={filterStatus} onChange={(e) => setFilterStatus(e.target.value)} style={{ padding: '10px' }}>
-          <option value="">All Statuses</option>
-          <option value="Todo">Todo</option>
-          <option value="In Progress">In Progress</option>
-          <option value="Completed">Completed</option>
-        </select>
+        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '1rem' }}>
+          <ViewToggle 
+            options={[
+              { label: 'My Tasks', value: 'tasks' },
+              { label: 'Insights', value: 'analytics' }
+            ]}
+            activeValue={currentView}
+            onChange={setCurrentView}
+          />
+        </div>
 
-        {/* Sort Dropdown */}
-        <select value={sortBy} onChange={(e) => setSortBy(e.target.value)} style={{ padding: '10px' }}>
-          <option value="createdAt">Newest First</option>
-          <option value="date">Due Date</option>
-          <option value="priority">Priority</option>
-        </select>
-      </div>
-
-      {/* SECTION: Task Grid */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '20px' }}>
-        {tasks.map(task => (
-          <div key={task._id} style={{ border: '1px solid #ddd', padding: '15px', borderRadius: '8px', backgroundColor: 'white', borderLeft: `5px solid ${getPriorityColor(task.priority)}` }}>
-            <h3 style={{ margin: '0 0 10px 0' }}>{task.title}</h3>
-            <p style={{ color: '#666', fontSize: '0.9em' }}>{task.description}</p>
-            
-            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.85em', color: '#888', marginBottom: '10px' }}>
-              <span>Due: {task.dueDate ? new Date(task.dueDate).toLocaleDateString() : 'No Date'}</span>
-              <span style={{ fontWeight: 'bold', color: getPriorityColor(task.priority) }}>{task.priority}</span>
-            </div>
-
-            {/* Quick Actions */}
-            <div style={{ display: 'flex', gap: '10px', marginTop: '10px' }}>
-              <select 
-                value={task.status} 
-                onChange={(e) => handleStatusChange(task, e.target.value)}
-                style={{ padding: '5px', borderRadius: '4px', flex: 1 }}
-              >
-                <option>Todo</option>
-                <option>In Progress</option>
-                <option>Completed</option>
-              </select>
+        {currentView === 'tasks' ? (
+          <>
+            {/* Controls Bar */}
+            <div className={styles.controls}>
               
-              <button onClick={() => openEditModal(task)} style={{ cursor: 'pointer', padding: '5px 10px' }}>Edit</button>
-              <button onClick={() => handleDelete(task._id)} style={{ cursor: 'pointer', padding: '5px 10px', color: 'red' }}>Delete</button>
+              {/* 3. SEARCH INPUT */}
+              <div className={styles.searchWrapper}>
+                <svg className={styles.searchIcon} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                <input 
+                  type="text" 
+                  placeholder="Search tasks..." 
+                  className={styles.searchInput}
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                />
+              </div>
+
+              <select 
+                className={styles.select}
+                value={filterStatus} 
+                onChange={(e) => setFilterStatus(e.target.value)}
+              >
+                <option value="">All Statuses</option>
+                <option value="Todo">To Do</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Completed">Completed</option>
+              </select>
+
+              <select 
+                className={styles.select}
+                value={sortBy} 
+                onChange={(e) => setSortBy(e.target.value)}
+              >
+                <option value="createdAt">Newest First</option>
+                <option value="date">Due Date</option>
+                <option value="priority">Priority</option>
+              </select>
+
+              <button onClick={openCreateModal} className={styles.addBtn}>
+                <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                </svg>
+                New Task
+              </button>
             </div>
+
+            {/* Task Grid */}
+            {/* 4. Use filteredTasks instead of tasks */}
+            {filteredTasks.length === 0 ? (
+              <div className={styles.emptyState}>
+                <h3>
+                  {searchQuery ? `No results for "${searchQuery}"` : "No tasks found"}
+                </h3>
+                <p>
+                  {searchQuery ? "Try a different keyword" : "Create a new task to get started!"}
+                </p>
+              </div>
+            ) : (
+              <div className={styles.grid}>
+                {filteredTasks.map(task => (
+                  <div key={task._id} className={styles.card}>
+                    <div 
+                      className={styles.priorityStrip} 
+                      style={{ backgroundColor: getPriorityColor(task.priority) }} 
+                    />
+
+                    <div className={styles.cardHeader}>
+                      <h3 className={styles.taskTitle}>{task.title}</h3>
+                      <span 
+                        className={styles.priorityBadge}
+                        style={{ color: getPriorityColor(task.priority) }}
+                      >
+                        {task.priority}
+                      </span>
+                    </div>
+
+                    <p className={styles.taskDesc}>{task.description}</p>
+                    
+                    <div className={styles.meta}>
+                      <span>Due: {task.dueDate ? new Date(task.dueDate).toLocaleDateString() : 'No Date'}</span>
+                    </div>
+
+                    <div className={styles.actions}>
+                      <select 
+                        className={styles.statusSelect}
+                        value={task.status} 
+                        onChange={(e) => handleStatusChange(task, e.target.value)}
+                      >
+                        <option>Todo</option>
+                        <option>In Progress</option>
+                        <option>Completed</option>
+                      </select>
+                      
+                      <button 
+                        className={styles.iconBtn} 
+                        onClick={() => openEditModal(task)}
+                        title="Edit Task"
+                      >
+                        <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                        </svg>
+                      </button>
+                      
+                      <button 
+                        className={`${styles.iconBtn} ${styles.deleteBtn}`} 
+                        onClick={() => initiateDelete(task)}
+                        title="Delete Task"
+                      >
+                        <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </>
+        ) : (
+          <div className={styles.analyticsWrapper}>
+            <Analytics refreshTrigger={refreshKey} />
           </div>
-        ))}
-      </div>
+        )}
 
-      {/* SECTION: Analytics */}
-      <Analytics />
+      </main>
 
-      {/* The Modal Component */}
       {isModalOpen && (
         <TaskModal 
           isOpen={isModalOpen} 
@@ -174,17 +290,16 @@ const Dashboard = () => {
           taskToEdit={editingTask}
         />
       )}
+
+      <DeleteModal 
+        isOpen={!!taskToDelete} 
+        onClose={() => setTaskToDelete(null)} 
+        onConfirm={confirmDelete}
+        taskTitle={taskToDelete?.title}
+      />
+
     </div>
   );
-};
-
-const getPriorityColor = (priority) => {
-  switch(priority) {
-    case 'High': return '#dc3545'; 
-    case 'Medium': return '#ffc107'; 
-    case 'Low': return '#28a745'; 
-    default: return '#ccc';
-  }
 };
 
 export default Dashboard;

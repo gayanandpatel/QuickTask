@@ -138,13 +138,13 @@ def get_productivity_stats():
         return jsonify({"error": "Internal Server Error"}), 500
 
 #for local development
-if __name__ == '__main__':
-    port = int(os.getenv("PORT", 5001))
-    app.run(debug=True, port=port)
+# if __name__ == '__main__':
+#     port = int(os.getenv("PORT", 5001))
+#     app.run(debug=True, port=port)
 
 #for production deployment
 # Vercel requires the 'app' object to be available globally.
 # We don't need to change anything else, just ensure app.run is inside the if block.
-# if __name__ == '__main__':
-#     port = int(os.getenv("PORT", 5001))
-#     app.run(debug=True, port=port)
+if __name__ == '__main__':
+    port = int(os.getenv("PORT", 5001))
+    app.run(debug=True, port=port)

@@ -26,18 +26,18 @@ app.get('/', (req, res) => {
 
 //for local development
 // Start the Server
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+// const PORT = process.env.PORT || 5000;
+// app.listen(PORT, () => {
+//   console.log(`Server running on port ${PORT}`);
+// });
 
 // for production deployment
-// const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5000;
 
-// // Only run the server if we are NOT in production (local development)
-// if (process.env.NODE_ENV !== 'production') {
-//     app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-// }
+// Only run the server if we are NOT in production (local development)
+if (process.env.NODE_ENV !== 'production') {
+    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+}
 
-// // Export the app for Vercel
-// export default app;
+// Export the app for Vercel
+export default app;

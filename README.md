@@ -17,7 +17,7 @@
 - [Overview](#-overview)
 - [Architecture](#-architecture)
 - [Features](#-features)
-- [Tech Stack](#tech-stack)
+- [Tech Stack](#-tech-stack)
 - [Prerequisites](#-prerequisites)
 - [Installation & Setup](#-installation--setup)
   - [Backend (Node.js)](#1-backend-core-service)

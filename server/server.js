@@ -14,10 +14,15 @@ connectDB();
 const app = express();
 
 // Middleware
-app.use(cors()); // Allows frontend to communicate with backend
+// app.use(cors()); // Allows frontend to communicate with backend
 app.use(json()); // Allows the backend to understand JSON data
 app.use('/api/auth', authRoutes); // Auth Routes
 app.use('/api/tasks', taskRoutes); // Task Routes
+// Update CORS to allow your deployed frontend
+app.use(cors({
+  origin: ["http://localhost:5173", "https://quick-task-delta.vercel.app"],
+  credentials: true
+}));
 
 // A simple test route to ensure server is working
 app.get('/', (req, res) => {

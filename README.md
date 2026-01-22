@@ -62,37 +62,37 @@ QuickTask/
 
 📱 Responsive Design: Optimized for seamless use on desktop and mobile devices.
 
-🛠️ Tech Stack
-Frontend
-Framework: React (Vite)
+## 🛠️ Tech Stack
+### Frontend
+- **Framework:** React (Vite)
 
-Routing: React Router DOM
+- Routing: React Router DOM
 
-HTTP Client: Axios
+- HTTP Client: Axios
 
-Visualization: Recharts
+- Visualization: Recharts
 
-Notifications: React-Toastify
+- Notifications: React-Toastify
 
-Backend (Core)
-Runtime: Node.js
+### Backend (Core)
+- Runtime: Node.js
 
-Framework: Express.js
+- Framework: Express.js
 
-Database: MongoDB (via Mongoose)
+- Database: MongoDB (via Mongoose)
 
-Auth: JSON Web Token (JWT)
+- Auth: JSON Web Token (JWT)
 
-Analytics Service
-Language: Python 3.8+
+### Analytics Service
+- Language: Python 3.8+
 
-Framework: Flask
+- Framework: Flask
 
-Driver: PyMongo
+- Driver: PyMongo
 
-Utilities: Pandas, Python-Dotenv
+- Utilities: Pandas, Python-Dotenv
 
-📋 Prerequisites
+## 📋 Prerequisites
 Ensure you have the following installed on your machine:
 
 Node.js (v14 or higher)

@@ -1,3 +1,11 @@
+### Access the live version of QuickTask here: https://quicktask.gayanandpatel.org/
+> ⚠️ Note: The application is currently under active development. Some features may be experimental.
+
+#### Use the following credentials to explore the application with pre-seeded data:
+
+  - Email: `reviewer@example.com`
+  - Password: `password123`
+
 # 🚀 QuickTask
 
 <div align="center">

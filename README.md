@@ -1,240 +1,301 @@
-# 🚀 QuickTask
-
-![Status](https://img.shields.io/badge/Status-In%20Development-orange?style=flat-square)
-![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square)
-![Stack](https://img.shields.io/badge/Full%20Stack-MERN%20%2B%20Python-blueviolet?style=flat-square)
-
-> **A robust, microservices-based task management application featuring a Node.js/Express backend, React frontend, and a dedicated Python service for data analytics.**
-
----
-
-## 📖 Table of Contents
-- [Overview](#-overview)
-- [Architecture](#-architecture)
-- [Features](#-features)
-- [Tech Stack](#-%EF%B8%8F-tech-stack)
-- [Prerequisites](#-prerequisites)
-- [Installation & Setup](#-%EF%B8%8F-installation--setup)
-  - [1. Backend (Node.js)](#1-%EF%B8%8F-backend-nodejs-setup)
-  - [2. Analytics (Python)](#2--analytics-service-python-setup)
-  - [3. Frontend (React)](#3-%EF%B8%8F-frontend-setup-react)
-- [Running the Application](#-running-the-application)
-- [Seeding Data](#-seeding-data-optional)
-- [Screenshots](#-screenshots)
-- [Troubleshooting](#-troubleshooting)
-- [Author](#-author)
+# QuickTask
+A robust task management application featuring a Node.js/Express backend, React frontend, and a dedicated Python microservice for data analytics. This project demonstrates a microservices architecture with authentication, CRUD operations, and data visualization.
 
 ---
 
 ## 📖 Overview
 
-**QuickTask** is designed to help users efficiently manage daily tasks while gaining meaningful insights through analytics. Unlike standard Todo apps, QuickTask employs a **microservices architecture**:
-1.  **Core Service:** Handles authentication and CRUD operations (Node.js).
-2.  **Analytics Service:** Performs heavy data aggregation and statistical calculations (Python).
-3.  **Client:** A responsive, modern UI that consumes both services (React).
+**QuickTask** is a personal task management application designed to help users efficiently manage daily tasks while gaining meaningful insights through analytics.
+
+The application is being developed with a modular and scalable architecture, separating backend services, frontend UI, and analytics logic for long-term maintainability.
 
 ---
 
-## 🏗 Architecture
+## 🚀 Features
+* **User Authentication:** Secure Login/Register with JWT & Bcrypt.
+* **Task Management:** Create, Read, Update, Delete (CRUD) tasks.
+* **Advanced Filtering:** Filter tasks by Status and Sort by Date/Priority.
+* **Analytics Dashboard:** Python-powered visualization of completion trends and stats.
+* **Responsive Design:** Optimized for desktop and mobile.
 
-The project is structured into three distinct directories to maintain separation of concerns:
+--- 
+
+## 🛠️ Tech Stack
+* **Frontend:** React (Vite), React Router, Axios, Recharts, React-Toastify.
+* **Backend:** Node.js, Express, MongoDB (Mongoose), JWT.
+* **Analytics Service:** Python, Flask, PyMongo, Pandas.
+
+---
+
+## 📂 Project Structure
 
 ```bash
 QuickTask/
 │
-├── analytics/   # 🐍 Python Microservice (Flask + PyMongo)
-│                # Handles: Data visualization logic, trend analysis
-│
-├── client/      # ⚛️ Frontend Application (React + Vite)
-│                # Handles: User Interface, Charts (Recharts), State
-│
-└── server/      # 🟢 Backend API (Node.js + Express)
-                 # Handles: Auth (JWT), Database (MongoDB), CRUD API
+├── analytics/   # Analytics, reports, and insights
+├── client/      # Frontend application (UI)
+└── server/      # Backend APIs and database logic
 ```
-## 🚀 Features
-🔐 Secure Authentication: User Login & Registration powered by JWT & Bcrypt.
+--- 
 
-📝 Task Management: Full CRUD capabilities (Create, Read, Update, Delete).
-
-🔍 Advanced Filtering: Sort tasks by Priority, Date, or Status (Todo/In Progress/Completed).
-
-📊 Analytics Dashboard: Real-time metrics visualization (Completion Rates, Pending Tasks) powered by Python.
-
-📱 Responsive Design: Optimized for seamless use on desktop and mobile devices.
-
-## 🛠️ Tech Stack
-### 1. Frontend
-- **Framework:** React (Vite)
-
-- Routing: React Router DOM
-
-- HTTP Client: Axios
-
-- Visualization: Recharts
-
-- Notifications: React-Toastify
-
-### 2. Backend (Core)
-- Runtime: Node.js
-
-- Framework: Express.js
-
-- Database: MongoDB (via Mongoose)
-
-- Auth: JSON Web Token (JWT)
-
-### Analytics Service
-- Language: Python 3.8+
-
-- Framework: Flask
-
-- Driver: PyMongo
-
-- Utilities: Pandas, Python-Dotenv
+## 🚀 Getting Started
 
 ## 📋 Prerequisites
-Ensure you have the following installed on your machine:
+Ensure you have the following installed:
+* **Node.js** (v14 or higher)
+* **Python** (v3.8 or higher)
+* **MongoDB** (Local or Atlas Connection String)
 
-Node.js (v14 or higher)
+## ⚙️ Installation & Setup
 
-Python (v3.8 or higher)
-
-MongoDB (Local instance or MongoDB Atlas Connection String)
-
-Git
-
-⚙️ Installation & Setup
-Clone the repository to get started:
-
-Bash
-
-git clone [https://github.com/gayanandpatel/QuickTask.git](https://github.com/gayanandpatel/QuickTask.git)
+### 1. Clone the Repository
+```bash
+git clone https://github.com/gayanandpatel/QuickTask.git
 cd QuickTask
-1. 🖥️ Backend (Node.js) Setup
-Navigate to the server directory:
 
-Bash
+### 1. 🖥️ Backend/Server Setup
 
+Navigate to the backend directory:
+```bash
 cd server
-Install dependencies:
-
-Bash
-
-npm install
-Configuration: Create a .env file in the /server folder:
-
-Code snippet
-
+```
+**Create a .env file in the /server folder:**
+```bash
 PORT=5000
-MONGO_URI=mongodb+srv://<your_user>:<your_password>@<your_cluster>.mongodb.net/prepnec_db
-JWT_SECRET=your_super_secret_key_123
-2. 📊 Analytics Service (Python) Setup
-Navigate to the analytics directory:
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_secret_key
+```
+**Step 1: Install Mongoose**
 
-Bash
+**Installation**
 
-cd ../analytics
-Create and activate a Virtual Environment:
+Install Mongoose using npm:
+```bash
+npm install mongoose
+```
+Or using yarn:
+```bash
+yarn add mongoose
+```
 
-Windows:
+**Step 2: Install the required libraries:**
 
-Bash
+**Installation**
 
+Using npm:
+```bash
+npm install express mongoose jsonwebtoken cors dotenv bcryptjs
+```
+Or using yarn:
+```bash
+yarn add express mongoose jsonwebtoken cors dotenv bcryptjs
+```
+
+**Step 3: Run the Server.**
+
+---
+
+### 2. 📊 Analytics Service (Python Microservice)
+
+This phase introduces a **separate analytics service built with Python**, following a real-world **microservices architecture**.
+
+- **Node.js** handles real-time CRUD operations and APIs  
+- **Python** handles heavy data processing, analytics, and reporting  
+
+This separation improves scalability, performance, and maintainability.
+
+---
+
+#### ✅ Prerequisites
+
+Ensure **Python** is installed on your system.
+
+Verify installation by running:
+
+```bash
+python --version
+```
+or
+```bash
+python3 --version
+```
+
+---
+
+#### 🧪 Environment Setup
+
+The analytics service lives outside the Node.js server folder as an independent service.
+
+**Step 1: Stop the Node.js server if it is running:**
+
+```bash
+Ctrl + C
+```
+**Step 2: Navigate back to the project root (where server and client exist):**
+```bash
+cd ..
+```
+
+**Step 3: Navigate to the analytics directory:**
+```bash
+cd analytics
+```
+
+**Step 4: Create a Python Virtual Environment (venv)**
+
+A virtual environment isolates Python dependencies so they do not affect global system packages.
+
+```bash
 python -m venv venv
+```
+Activate the virtual environment:
+```bash
 venv\Scripts\activate
-Mac/Linux:
+```
+Once activated, your terminal will show something like:
+```bash
+(venv)
+```
 
-Bash
+This confirms the virtual environment is active.
 
-python3 -m venv venv
-source venv/bin/activate
-Install Python dependencies:
+**Step 5: Install Analytics Service Dependencies**
 
-Bash
+The analytics service requires several Python libraries to function as an independent backend service.
 
+These dependencies enable:
+- Running a lightweight web server
+- Communicating with MongoDB
+- Managing environment variables securely
+- Allowing cross-origin requests from the frontend
+
+#### Required Libraries
+
+- **Flask** – Web framework for building the analytics API
+- **PyMongo** – MongoDB driver for Python
+- **python-dotenv** – Loads environment variables from `.env`
+- **flask-cors** – Enables Cross-Origin Resource Sharing (CORS)
+
+#### Installation
+
+Ensure the **virtual environment is activated** before installing dependencies.
+
+Run the following command:
+
+```bash
 pip install flask pymongo python-dotenv flask-cors
-Configuration: Create a .env file in the /analytics folder.
+```
 
-Note: Ensure the MONGO_URI matches the one in the Server exactly.
-
-Code snippet
-
+**Step 6: Create a .env file in the /analytics folder:**
+```bash
 PORT=5001
-MONGO_URI=mongodb+srv://<your_user>:<your_password>@<your_cluster>.mongodb.net/prepnec_db
-3. ⚛️ Frontend Setup (React)
-Navigate to the client directory:
+MONGO_URI=your_mongodb_connection_string
+```
 
-Bash
+**Step 7: Start the Python Server**
 
-cd ../client
-Install dependencies:
+---
 
-Bash
+### 3. 🖥️ Frontend Setup & Routing (React)
 
+This phase sets up the **React frontend** using **Vite**, which will communicate with:
+- The **Node.js backend** for core application logic
+- The **Python analytics service** for charts and insights
+
+---
+
+#### Setup & Routing
+
+**Step 1: Initialize the React App**
+
+1. Stop all running servers  
+   (or open a new terminal split in VS Code).
+
+2. Navigate to the project root directory  
+   (the folder that contains `server` and `analytics`):
+
+```bash
+cd ..
+```
+**Step 3: Create the React application using Vite:**
+```bash
+npm create vite@latest client -- --template react
+```
+**Step 4: Navigate into the client directory and install dependencies:**
+```bash
+cd client
 npm install
-(Optional) Clean up default styles if you haven't already.
+```
+**Step 5: Install Frontend Dependencies**
 
-🏃‍♂️ Running the Application
-To run the full application, you need to open three separate terminal windows/tabs.
+Install the required libraries for routing, API communication, notifications, and charts:
+```bash
+npm install axios react-router-dom react-toastify recharts
+```
+##### Library Overview
 
-Terminal 1: Core Backend
-Bash
+- **axios:**
+Used for making HTTP requests to the Node.js and Python backend services.
 
+- **react-router-dom:**
+Enables client-side routing and navigation between pages.
+
+- **react-toastify:**
+Provides clean, professional toast notifications for user feedback.
+
+- **recharts:**
+Used to visualize productivity and analytics data with charts.
+
+**Step 6: Clean Up Boilerplate**
+
+To keep the frontend clean and minimal:
+
+1. Delete the default stylesheet:
+```bash
+src/App.css
+```
+
+2. Open src/main.jsx and remove the following line if you do not want default styles:
+```bash
+import './index.css';
+```
+ℹ️ You may keep index.css if you want basic CSS resets or global styles.
+
+
+### 🏃‍♂️ How to Run
+You need to run all three services simultaneously (in separate terminal windows).
+
+#### Terminal 1: Backend
+```bash
 cd server
 npm start
-# Runs on: http://localhost:5000
-Terminal 2: Analytics Service
-(Make sure your virtual environment is active)
-
-Bash
-
+```
+**OR**
+```bash
+node server.js
+Server runs on: http://localhost:5000
+```
+#### Terminal 2: Analytics
+```bash
 cd analytics
 python app.py
-# Runs on: http://localhost:5001
-Terminal 3: Frontend Client
-Bash
+```
+Analytics runs on: http://localhost:5001
 
+#### Terminal 3: Frontend
+```bash
 cd client
 npm run dev
-# Runs on: http://localhost:5173
-🧪 Seeding Data (Optional)
-If you want to quickly populate your database with a test user and sample tasks to see the analytics in action:
+```
+Client runs on: http://localhost:5173
 
-Open a terminal in the server directory.
+--- 
 
-Run the seed script:
+## 📄 License
 
-Bash
+This project is currently under development.
+License details will be added later.
 
-node seed.js
-Login Credentials:
+## ✍️ Author
 
-Email: reviewer@example.com
-
-Password: password123
-
-📸 Screenshots
-Analytics Dashboard
-Visualizing task completion rates and productivity trends.
-
-(Place your screenshot image in a 'screenshots' folder in the root directory)
-
-🔧 Troubleshooting
-Analytics Charts show "0" data:
-
-Ensure both server/.env and analytics/.env point to the exact same database name (e.g., /prepnec_db).
-
-Log out and log back in to ensure your User ID token is fresh.
-
-Connection Refused:
-
-Ensure MongoDB is running.
-
-Check that ports 5000, 5001, and 5173 are not blocked by firewalls.
-
-✍️ Author
-Gayanand Patel
-
-GitHub: gayanandpatel
-
-Project: QuickTask
+**Gayanand Patel**

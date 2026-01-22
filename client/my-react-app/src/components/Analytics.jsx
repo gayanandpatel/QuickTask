@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-// Define the URL logic at the top of the component or outside
+// Use environment variable for analytics URL with fallback
 const ANALYTICS_URL = import.meta.env.VITE_ANALYTICS_URL || 'http://localhost:5001/api';
 
 import { 
   BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend,
   PieChart, Pie, Cell 
 } from 'recharts';
-import styles from './Analytics.module.css'; // Import the new CSS Module
+import styles from './Analytics.module.css';
 
 const Analytics = ({ refreshTrigger }) => {
   const [stats, setStats] = useState(null);

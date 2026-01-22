@@ -12,6 +12,7 @@ load_dotenv()
 app = Flask(__name__)
 CORS(app)
 
+#for Production deployment
 # Update CORS
 # CORS(app, resources={r"/*": {"origins": ["http://localhost:5173", "https://quick-task-delta.vercel.app"]}})
 
@@ -87,7 +88,6 @@ def get_productivity_stats():
         seven_days_ago = datetime.utcnow() - timedelta(days=6) # 6 days ago + today = 7 days
 
         # 2. Aggregation Pipeline
-        # We match ALL tasks from last 7 days (not just completed)
         pipeline = [
             {
                 "$match": {
@@ -109,7 +109,6 @@ def get_productivity_stats():
         raw_data = list(tasks_collection.aggregate(pipeline))
 
         # 3. Restructure Data for Stacked Bar Chart
-        # Goal: [{"date": "2023-10-01", "Todo": 2, "In Progress": 1, "Completed": 5}, ...]
         
         # Initialize a dictionary for the last 7 days with 0 counts
         stats_by_date = {}

@@ -17,7 +17,7 @@ const Dashboard = () => {
   const [tasks, setTasks] = useState([]);
   const [filterStatus, setFilterStatus] = useState(''); 
   const [sortBy, setSortBy] = useState('createdAt'); 
-  const [searchQuery, setSearchQuery] = useState(''); // 1. New Search State
+  const [searchQuery, setSearchQuery] = useState('');
   
   const [refreshKey, setRefreshKey] = useState(0); 
 
@@ -48,8 +48,7 @@ const Dashboard = () => {
     loadTasks();
   }, [filterStatus, sortBy, refreshKey]);
 
-  // --- 2. FILTER LOGIC (Instant Search) ---
-  // We filter the already fetched 'tasks' array based on the search query
+// --- FILTERING & SEARCHING ---
   const filteredTasks = tasks.filter(task => 
     task.title.toLowerCase().includes(searchQuery.toLowerCase())
   );

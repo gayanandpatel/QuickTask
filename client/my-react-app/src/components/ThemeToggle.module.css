@@ -1,10 +1,8 @@
-/* src/components/ThemeToggle.module.css */
-
 .container {
   position: relative;
   width: 52px;
   height: 28px;
-  background-color: #e2e8f0; /* Light mode track */
+  background-color: #e2e8f0; 
   border-radius: 50px;
   cursor: pointer;
   padding: 2px;
@@ -16,7 +14,7 @@
 
 /* Dark mode track color */
 :global([data-theme='dark']) .container {
-  background-color: #334155; /* Slate 700 */
+  background-color: #334155; 
 }
 
 /* The sliding circle */
@@ -31,14 +29,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fbbf24; /* Sun Color */
+  color: #fbbf24; 
 }
 
 /* Move thumb when dark */
 :global([data-theme='dark']) .thumb {
   transform: translateX(24px);
-  background-color: #0f172a; /* Slate 900 */
-  color: #fbbf24; /* Moon Color */
+  background-color: #0f172a; 
+  color: #fbbf24; 
 }
 
 /* Icons */

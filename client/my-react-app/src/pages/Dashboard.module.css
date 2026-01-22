@@ -1,8 +1,6 @@
-/* src/pages/Dashboard.module.css */
-
 .container {
   min-height: 100vh;
-  background-color: var(--bg-body); /* Adapts to Dark Mode */
+  background-color: var(--bg-body); 
   display: flex;
   flex-direction: column;
   transition: background-color 0.3s ease;
@@ -10,7 +8,7 @@
 
 /* --- Header --- */
 .header {
-  background-color: var(--bg-card); /* Adapts to Dark Mode */
+  background-color: var(--bg-card);
   border-bottom: 1px solid var(--border-color);
   padding: 1rem 2rem;
   display: flex;
@@ -85,13 +83,13 @@
 /* SEARCH BAR STYLES */
 .searchWrapper {
   position: relative;
-  flex: 1; /* Allows search to fill available space */
+  flex: 1;
   min-width: 240px;
 }
 
 .searchInput {
   width: 100%;
-  padding: 0.6rem 1rem 0.6rem 2.5rem; /* Left padding for icon */
+  padding: 0.6rem 1rem 0.6rem 2.5rem;
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
   background-color: var(--bg-card);
@@ -119,7 +117,7 @@
   color: var(--text-muted);
   width: 18px;
   height: 18px;
-  pointer-events: none; /* Let clicks pass through to input */
+  pointer-events: none;
 }
 
 /* SELECT DROPDOWNS */

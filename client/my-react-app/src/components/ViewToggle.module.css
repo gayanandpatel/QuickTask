@@ -1,8 +1,6 @@
-/* src/components/ViewToggle.module.css */
-
 .container {
   display: inline-flex;
-  background-color: #f1f5f9; /* Slate 100 */
+  background-color: #f1f5f9; 
   padding: 4px;
   border-radius: var(--radius-lg);
   position: relative;
@@ -22,7 +20,7 @@
   cursor: pointer;
   border-radius: var(--radius-md);
   transition: color 0.2s ease;
-  min-width: 100px; /* Ensure buttons have substantial width */
+  min-width: 100px; 
 }
 
 .button:hover {
@@ -30,7 +28,7 @@
 }
 
 .active {
-  color: var(--color-primary); /* Indigo 500 */
+  color: var(--color-primary); 
 }
 
 /* The sliding background pill */

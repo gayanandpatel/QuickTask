@@ -6,7 +6,7 @@ import styles from './Login.module.css';
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });
-  const [showPassword, setShowPassword] = useState(false); // New State
+  const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -62,8 +62,8 @@ const Login = () => {
             <div className={styles.passwordWrapper}>
               <input 
                 id="password"
-                className={styles.passwordInput} // Use new class for padding
-                type={showPassword ? "text" : "password"} // Dynamic Type
+                className={styles.passwordInput} 
+                type={showPassword ? "text" : "password"}
                 name="password" 
                 placeholder="••••••••"
                 value={formData.password} 

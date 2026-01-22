@@ -6,7 +6,7 @@ import styles from './Register.module.css';
 
 const Register = () => {
   const [formData, setFormData] = useState({ username: '', email: '', password: '' });
-  const [showPassword, setShowPassword] = useState(false); // New State
+  const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -74,8 +74,8 @@ const Register = () => {
             <div className={styles.passwordWrapper}>
               <input 
                 id="password"
-                className={styles.passwordInput} // Use new class for padding
-                type={showPassword ? "text" : "password"} // Dynamic Type
+                className={styles.passwordInput} 
+                type={showPassword ? "text" : "password"}
                 name="password" 
                 placeholder="Create a strong password"
                 value={formData.password} 

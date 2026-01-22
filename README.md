@@ -223,6 +223,6 @@ Visualizing task completion rates and productivity trends.
 ## ✍️ Author
 ### Gayanand Patel
 
-- GitHub: gayanandpatel
+- GitHub: [gayanandpatel](https://github.com/gayanandpatel)
 
 - Project: QuickTask

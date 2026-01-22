@@ -153,7 +153,7 @@ pip install flask pymongo python-dotenv flask-cors
 PORT=5001
 MONGO_URI=mongodb+srv://<your_user>:<your_password>@<your_cluster>.mongodb.net/
 ```
-3. ### ⚛️ Frontend Setup (React)
+### 3. ⚛️ Frontend Setup (React)
 Navigate to the client directory:
 
 Bash

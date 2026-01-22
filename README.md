@@ -63,7 +63,7 @@ QuickTask/
 📱 Responsive Design: Optimized for seamless use on desktop and mobile devices.
 
 ## 🛠️ Tech Stack
-### Frontend
+### 1. Frontend
 - **Framework:** React (Vite)
 
 - Routing: React Router DOM
@@ -74,7 +74,7 @@ QuickTask/
 
 - Notifications: React-Toastify
 
-### Backend (Core)
+### 2. Backend (Core)
 - Runtime: Node.js
 
 - Framework: Express.js
@@ -83,7 +83,7 @@ QuickTask/
 
 - Auth: JSON Web Token (JWT)
 
-### Analytics Service
+### 3. Analytics Service
 - Language: Python 3.8+
 
 - Framework: Flask

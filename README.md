@@ -50,3 +50,191 @@ QuickTask/
 │
 └── server/      # 🟢 Backend API (Node.js + Express)
                  # Handles: Auth (JWT), Database (MongoDB), CRUD API
+
+🚀 Features
+🔐 Secure Authentication: User Login & Registration powered by JWT & Bcrypt.
+
+📝 Task Management: Full CRUD capabilities (Create, Read, Update, Delete).
+
+🔍 Advanced Filtering: Sort tasks by Priority, Date, or Status (Todo/In Progress/Completed).
+
+📊 Analytics Dashboard: Real-time metrics visualization (Completion Rates, Pending Tasks) powered by Python.
+
+📱 Responsive Design: Optimized for seamless use on desktop and mobile devices.
+
+🛠️ Tech Stack
+Frontend
+Framework: React (Vite)
+
+Routing: React Router DOM
+
+HTTP Client: Axios
+
+Visualization: Recharts
+
+Notifications: React-Toastify
+
+Backend (Core)
+Runtime: Node.js
+
+Framework: Express.js
+
+Database: MongoDB (via Mongoose)
+
+Auth: JSON Web Token (JWT)
+
+Analytics Service
+Language: Python 3.8+
+
+Framework: Flask
+
+Driver: PyMongo
+
+Utilities: Pandas, Python-Dotenv
+
+📋 Prerequisites
+Ensure you have the following installed on your machine:
+
+Node.js (v14 or higher)
+
+Python (v3.8 or higher)
+
+MongoDB (Local instance or MongoDB Atlas Connection String)
+
+Git
+
+⚙️ Installation & Setup
+Clone the repository to get started:
+
+Bash
+
+git clone [https://github.com/gayanandpatel/QuickTask.git](https://github.com/gayanandpatel/QuickTask.git)
+cd QuickTask
+1. 🖥️ Backend (Node.js) Setup
+Navigate to the server directory:
+
+Bash
+
+cd server
+Install dependencies:
+
+Bash
+
+npm install
+Configuration: Create a .env file in the /server folder:
+
+Code snippet
+
+PORT=5000
+MONGO_URI=mongodb+srv://<your_user>:<your_password>@<your_cluster>.mongodb.net/prepnec_db
+JWT_SECRET=your_super_secret_key_123
+2. 📊 Analytics Service (Python) Setup
+Navigate to the analytics directory:
+
+Bash
+
+cd ../analytics
+Create and activate a Virtual Environment:
+
+Windows:
+
+Bash
+
+python -m venv venv
+venv\Scripts\activate
+Mac/Linux:
+
+Bash
+
+python3 -m venv venv
+source venv/bin/activate
+Install Python dependencies:
+
+Bash
+
+pip install flask pymongo python-dotenv flask-cors
+Configuration: Create a .env file in the /analytics folder.
+
+Note: Ensure the MONGO_URI matches the one in the Server exactly.
+
+Code snippet
+
+PORT=5001
+MONGO_URI=mongodb+srv://<your_user>:<your_password>@<your_cluster>.mongodb.net/prepnec_db
+3. ⚛️ Frontend Setup (React)
+Navigate to the client directory:
+
+Bash
+
+cd ../client
+Install dependencies:
+
+Bash
+
+npm install
+(Optional) Clean up default styles if you haven't already.
+
+🏃‍♂️ Running the Application
+To run the full application, you need to open three separate terminal windows/tabs.
+
+Terminal 1: Core Backend
+Bash
+
+cd server
+npm start
+# Runs on: http://localhost:5000
+Terminal 2: Analytics Service
+(Make sure your virtual environment is active)
+
+Bash
+
+cd analytics
+python app.py
+# Runs on: http://localhost:5001
+Terminal 3: Frontend Client
+Bash
+
+cd client
+npm run dev
+# Runs on: http://localhost:5173
+🧪 Seeding Data (Optional)
+If you want to quickly populate your database with a test user and sample tasks to see the analytics in action:
+
+Open a terminal in the server directory.
+
+Run the seed script:
+
+Bash
+
+node seed.js
+Login Credentials:
+
+Email: reviewer@example.com
+
+Password: password123
+
+📸 Screenshots
+Analytics Dashboard
+Visualizing task completion rates and productivity trends.
+
+(Place your screenshot image in a 'screenshots' folder in the root directory)
+
+🔧 Troubleshooting
+Analytics Charts show "0" data:
+
+Ensure both server/.env and analytics/.env point to the exact same database name (e.g., /prepnec_db).
+
+Log out and log back in to ensure your User ID token is fresh.
+
+Connection Refused:
+
+Ensure MongoDB is running.
+
+Check that ports 5000, 5001, and 5173 are not blocked by firewalls.
+
+✍️ Author
+Gayanand Patel
+
+GitHub: gayanandpatel
+
+Project: QuickTask

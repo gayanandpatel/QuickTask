@@ -209,7 +209,13 @@ node seed.js
 ### Analytics Dashboard
 Visualizing task completion rates and productivity trends.
 #### HomePage
-https://github.com/gayanandpatel/QuickTask/blob/main/screenshots/homepage.png
+<img width="1915" height="1019" alt="homepage" src="https://github.com/user-attachments/assets/8210cea7-5406-410c-9577-9e617dd1d6ca" />
+
+#### Register Modal
+<img width="1911" height="1017" alt="register_page" src="https://github.com/user-attachments/assets/025f0e13-fa52-4145-bc4e-7a1bf7954456" />
+
+####
+
 
 ## 🔧 Troubleshooting
 - ### Analytics Charts show "0" data:

@@ -1,241 +1,272 @@
-# 🚀 QuickTask
+<!-- PROJECT SHIELDS -->
 
-![Status](https://img.shields.io/badge/Status-In%20Development-orange?style=flat-square)
-![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square)
-![Stack](https://img.shields.io/badge/Full%20Stack-MERN%20%2B%20Python-blueviolet?style=flat-square)
+<div align="center">
 
-> **A robust, microservices-based task management application featuring a Node.js/Express backend, React frontend, and a dedicated Python service for data analytics.**
+<br />
 
----
+🚀 QuickTask
 
-## 📖 Table of Contents
-- [Overview](#-overview)
-- [Architecture](#-architecture)
-- [Features](#-features)
-- [Tech Stack](#-tech-stack)
-- [Prerequisites](#-prerequisites)
-- [Installation & Setup](#-%EF%B8%8F-installation--setup)
-  - [1. Backend (Node.js)](#1-%EF%B8%8F-backend-nodejs-setup)
-  - [2. Analytics (Python)](#2--analytics-service-python-setup)
-  - [3. Frontend (React)](#3-%EF%B8%8F-frontend-setup-react)
-- [Running the Application](#-running-the-application)
-- [Seeding Data](#-seeding-data-optional)
-- [Screenshots](#-screenshots)
-- [Troubleshooting](#-troubleshooting)
-- [Author](#-author)
+<p align="center">
+<b>A robust, microservices-based task management ecosystem.</b>
 
----
 
-## 📖 Overview
 
-**QuickTask** is designed to help users efficiently manage daily tasks while gaining meaningful insights through analytics. Unlike standard Todo apps, QuickTask employs a **microservices architecture**:
-1.  **Core Service:** Handles authentication and CRUD operations (Node.js).
-2.  **Analytics Service:** Performs heavy data aggregation and statistical calculations (Python).
-3.  **Client:** A responsive, modern UI that consumes both services (React).
 
----
+<i>Featuring a Node.js core, React frontend, and dedicated Python analytics engine.</i>
+</p>
+</div>
 
-## 🏗 Architecture
+📖 Table of Contents
 
-The project is structured into three distinct directories to maintain separation of concerns:
+About the Project
 
-```bash
+Architecture
+
+Tech Stack
+
+Getting Started
+
+Prerequisites
+
+Installation
+
+Configuration
+
+Running the Application
+
+Data Seeding
+
+Troubleshooting
+
+Author
+
+📖 About the Project
+
+QuickTask goes beyond standard To-Do applications by integrating data science with daily productivity. It employs a microservices architecture to separate concerns between operational data management and heavy analytical processing.
+
+Key Features
+
+🔐 Secure Authentication: Robust Login/Registration flow powered by JWT & Bcrypt.
+
+📝 Full Cycle Task Management: Create, Read, Update, and Delete tasks with ease.
+
+🔍 Smart Filtering: Sort by Priority, Date, or Status (Todo / In Progress / Completed).
+
+📊 Real-time Analytics: A dedicated Python microservice calculates completion rates and productivity trends.
+
+📱 Responsive UI: A seamless experience across desktop and mobile devices.
+
+🏗 Architecture
+
+The project is structured into three distinct directories:
+
+graph TD
+    User((User))
+    Client[⚛️ Client / React]
+    Server[🟢 Core Server / Node.js]
+    Analytics[🐍 Analytics / Python]
+    DB[(🍃 MongoDB)]
+
+    User --> Client
+    Client -->|Auth & CRUD| Server
+    Client -->|Fetch Charts| Analytics
+    Server -->|Read/Write| DB
+    Analytics -->|Read/Aggregate| DB
+
+
+Directory Structure
+
 QuickTask/
-│
 ├── analytics/   # 🐍 Python Microservice (Flask + PyMongo)
-│                # Handles: Data visualization logic, trend analysis
-│
 ├── client/      # ⚛️ Frontend Application (React + Vite)
-│                # Handles: User Interface, Charts (Recharts), State
-│
 └── server/      # 🟢 Backend API (Node.js + Express)
-                 # Handles: Auth (JWT), Database (MongoDB), CRUD API
-```
-## 🚀 Features
-🔐 Secure Authentication: User Login & Registration powered by JWT & Bcrypt.
 
-📝 Task Management: Full CRUD capabilities (Create, Read, Update, Delete).
 
-🔍 Advanced Filtering: Sort tasks by Priority, Date, or Status (Todo/In Progress/Completed).
+🛠 Tech Stack
 
-📊 Analytics Dashboard: Real-time metrics visualization (Completion Rates, Pending Tasks) powered by Python.
+Component
 
-📱 Responsive Design: Optimized for seamless use on desktop and mobile devices.
+Technology
 
-## 🛠️ Tech Stack
+Role
 
-### 1. Frontend
-- **Framework:** React (Vite)
+Frontend
 
-- Routing: React Router DOM
+React (Vite), Axios, React Router
 
-- HTTP Client: Axios
+User Interface & State Management
 
-- Visualization: Recharts
+Visualization
 
-- Notifications: React-Toastify
+Recharts
 
-### 2. Backend (Core)
-- Runtime: Node.js
+Data Visualization & Charts
 
-- Framework: Express.js
+Backend (Core)
 
-- Database: MongoDB (via Mongoose)
+Node.js, Express.js
 
-- Auth: JSON Web Token (JWT)
+Auth, API Routes, CRUD Operations
 
-### 3. Analytics Service
-- Language: Python 3.8+
+Backend (Analytics)
 
-- Framework: Flask
+Python (Flask), Pandas
 
-- Driver: PyMongo
+Data Aggregation & Statistical Logic
 
-- Utilities: Pandas, Python-Dotenv
+Database
 
-## 📋 Prerequisites
-Ensure you have the following installed on your machine:
+MongoDB (Mongoose + PyMongo)
 
-Node.js (v14 or higher)
+Unified Data Storage
 
-Python (v3.8 or higher)
+Authentication
 
-MongoDB (Local instance or MongoDB Atlas Connection String)
+JSON Web Token (JWT)
+
+Stateless Security
+
+⚡ Getting Started
+
+Prerequisites
+
+Ensure you have the following installed locally:
+
+Node.js (v14+)
+
+Python (v3.8+)
+
+MongoDB (Local instance or Atlas URI)
 
 Git
 
-⚙️ Installation & Setup
-Clone the repository to get started:
+Installation
 
-Bash
+Clone the repository:
 
 git clone [https://github.com/gayanandpatel/QuickTask.git](https://github.com/gayanandpatel/QuickTask.git)
 cd QuickTask
-1. 🖥️ Backend (Node.js) Setup
-Navigate to the server directory:
 
-Bash
+
+1. Setup Backend (Node.js)
 
 cd server
-Install dependencies:
-
-Bash
-
 npm install
-Configuration: Create a .env file in the /server folder:
 
-Code snippet
 
-PORT=5000
-MONGO_URI=mongodb+srv://<your_user>:<your_password>@<your_cluster>.mongodb.net/prepnec_db
-JWT_SECRET=your_super_secret_key_123
-2. 📊 Analytics Service (Python) Setup
-Navigate to the analytics directory:
-
-Bash
+2. Setup Analytics (Python)
 
 cd ../analytics
-Create and activate a Virtual Environment:
 
-Windows:
-
-Bash
-
+# Windows
 python -m venv venv
 venv\Scripts\activate
-Mac/Linux:
 
-Bash
-
+# Mac/Linux
 python3 -m venv venv
 source venv/bin/activate
-Install Python dependencies:
 
-Bash
-
+# Install requirements
 pip install flask pymongo python-dotenv flask-cors
-Configuration: Create a .env file in the /analytics folder.
 
-Note: Ensure the MONGO_URI matches the one in the Server exactly.
 
-Code snippet
-
-PORT=5001
-MONGO_URI=mongodb+srv://<your_user>:<your_password>@<your_cluster>.mongodb.net/prepnec_db
-3. ⚛️ Frontend Setup (React)
-Navigate to the client directory:
-
-Bash
+3. Setup Frontend (React)
 
 cd ../client
-Install dependencies:
-
-Bash
-
 npm install
-(Optional) Clean up default styles if you haven't already.
+
+
+⚙ Configuration
+
+You must create a .env file in both the server and analytics directories.
+
+1. server/.env
+
+PORT=5000
+MONGO_URI=mongodb+srv://<user>:<password>@<cluster>.mongodb.net/prepnec_db
+JWT_SECRET=your_super_secret_key_123
+
+
+2. analytics/.env
+Note: Ensure the MONGO_URI matches the server exactly.
+
+PORT=5001
+MONGO_URI=mongodb+srv://<user>:<password>@<cluster>.mongodb.net/prepnec_db
+
 
 🏃‍♂️ Running the Application
-To run the full application, you need to open three separate terminal windows/tabs.
 
-Terminal 1: Core Backend
-Bash
+To run the full ecosystem, open three separate terminal windows.
 
-cd server
-npm start
-# Runs on: http://localhost:5000
-Terminal 2: Analytics Service
-(Make sure your virtual environment is active)
+Terminal
 
-Bash
+Service
 
-cd analytics
-python app.py
-# Runs on: http://localhost:5001
-Terminal 3: Frontend Client
-Bash
+Command
 
-cd client
-npm run dev
-# Runs on: http://localhost:5173
-🧪 Seeding Data (Optional)
-If you want to quickly populate your database with a test user and sample tasks to see the analytics in action:
+Address
+
+#1
+
+Core Backend
+
+cd server && npm start
+
+http://localhost:5000
+
+#2
+
+Analytics
+
+cd analytics && python app.py
+
+http://localhost:5001
+
+#3
+
+Client
+
+cd client && npm run dev
+
+http://localhost:5173
+
+🧪 Data Seeding
+
+Want to test the analytics without manually creating tasks? Use the seeder script.
 
 Open a terminal in the server directory.
 
-Run the seed script:
-
-Bash
+Run the script:
 
 node seed.js
-Login Credentials:
+
+
+Login with these credentials:
 
 Email: reviewer@example.com
 
 Password: password123
 
-📸 Screenshots
-Analytics Dashboard
-Visualizing task completion rates and productivity trends.
-
-(Place your screenshot image in a 'screenshots' folder in the root directory)
-
 🔧 Troubleshooting
-Analytics Charts show "0" data:
+
+<details>
+<summary><b>Analytics Charts show "0" or No Data</b></summary>
 
 Ensure both server/.env and analytics/.env point to the exact same database name (e.g., /prepnec_db).
 
-Log out and log back in to ensure your User ID token is fresh.
+Log out and log back in to refresh your JWT token.
 
-Connection Refused:
+</details>
 
-Ensure MongoDB is running.
+<details>
+<summary><b>Connection Refused</b></summary>
 
-Check that ports 5000, 5001, and 5173 are not blocked by firewalls.
+Ensure your MongoDB instance is running.
+
+Verify ports 5000, 5001, and 5173 are not blocked by a firewall.
+
+</details>
 
 ✍️ Author
+
 Gayanand Patel
-
-GitHub: gayanandpatel
-
-Project: QuickTask

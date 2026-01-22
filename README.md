@@ -19,10 +19,10 @@
 - [Features](#-features)
 - [Tech Stack](#techstack)
 - [Prerequisites](#-prerequisites)
-- [Installation & Setup](#-installation--setup)
-  - [Backend (Node.js)](#1-backend-core-service)
-  - [Analytics (Python)](#2-analytics-service)
-  - [Frontend (React)](#3-frontend-client)
+- [Installation & Setup](#installation)
+  - [Backend (Node.js)](#backend-node)
+  - [Analytics (Python)](#analytic-python)
+  - [Frontend (React)](#frontend-react)
 - [Running the Application](#-running-the-application)
 - [Seeding Data](#-seeding-data-optional)
 - [Screenshots](#-screenshots)
@@ -69,7 +69,7 @@ QuickTask/
 
 ## 🛠️ Tech Stack <a id = "techstack"> </a>
 
-### 1. Frontend
+### 1. Frontend 
 - **Framework:** React (Vite)
 
 - **Routing:** React Router DOM
@@ -109,13 +109,13 @@ Ensure you have the following installed on your machine:
 
 - Git
 
-## ⚙️ Installation & Setup
+## ⚙️ Installation & Setup <a id = "installation"> </a>
 Clone the repository to get started:
 ```bash
 git clone [https://github.com/gayanandpatel/QuickTask.git](https://github.com/gayanandpatel/QuickTask.git)
 cd QuickTask
 ```
-### 1. 🖥️ Backend (Node.js) Setup
+### 1. 🖥️ Backend (Node.js) Setup <a id = "backend-node"> </a>
 1. **Navigate to the server directory:**
 ```bash
 cd server
@@ -130,7 +130,7 @@ PORT=5000
 MONGO_URI=mongodb+srv://<your_user>:<your_password>@<your_cluster>.mongodb.net/
 JWT_SECRET=your_super_secret_key_123
 ```
-### 2. 📊 Analytics Service (Python) Setup
+### 2. 📊 Analytics Service (Python) Setup <a id = "analytic-python"> </a>
 1. **Navigate to the analytics directory:**
 ```bash
 cd ../analytics
@@ -158,7 +158,7 @@ pip install flask pymongo python-dotenv flask-cors
 PORT=5001
 MONGO_URI=mongodb+srv://<your_user>:<your_password>@<your_cluster>.mongodb.net/
 ```
-### 3. ⚛️ Frontend Setup (React)
+### 3. ⚛️ Frontend Setup (React) <a id = "frontend-react"> </a>
 1. **Navigate to the client directory:**
 ```bash
 cd ../client

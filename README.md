@@ -208,8 +208,8 @@ node seed.js
 ## 📸 Screenshots
 ### Analytics Dashboard
 Visualizing task completion rates and productivity trends.
-
-(Place your screenshot image in a 'screenshots' folder in the root directory)
+#### HomePage
+https://github.com/gayanandpatel/QuickTask/blob/main/screenshots/homepage.png
 
 ## 🔧 Troubleshooting
 - ### Analytics Charts show "0" data:

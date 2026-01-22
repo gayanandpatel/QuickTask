@@ -211,10 +211,30 @@ Visualizing task completion rates and productivity trends.
 #### HomePage
 <img width="1915" height="1019" alt="homepage" src="https://github.com/user-attachments/assets/8210cea7-5406-410c-9577-9e617dd1d6ca" />
 
-#### Register Modal
+#### SignUp Modal
 <img width="1911" height="1017" alt="register_page" src="https://github.com/user-attachments/assets/025f0e13-fa52-4145-bc4e-7a1bf7954456" />
 
-####
+#### SignIn Modal
+<img width="1900" height="988" alt="signin" src="https://github.com/user-attachments/assets/38f48396-9ceb-46a7-b7f7-8ca9ad1d3c59" />
+
+#### Dashboard Without Tasks
+<img width="1911" height="961" alt="new_dashboard" src="https://github.com/user-attachments/assets/7562af0c-cf9c-4188-bd11-2aff9227d396" />
+
+#### New Task Creation
+<img width="1904" height="1019" alt="create_new-task" src="https://github.com/user-attachments/assets/6e36898b-5b23-4f98-a182-a4c165dc1f4d" />
+
+#### Dashboard with created Task
+<img width="1904" height="1024" alt="task_created" src="https://github.com/user-attachments/assets/e3433159-028e-489a-98a7-d6b120c081ba" />
+
+#### Theme Toggle Button
+<img width="1888" height="922" alt="theme-toggle-button" src="https://github.com/user-attachments/assets/2d98be1f-027a-47ee-82e2-2836cf1efc08" />
+
+#### Dashboard and Insights
+<img width="1877" height="1011" alt="dashboard" src="https://github.com/user-attachments/assets/2608598f-a6ac-4db3-b441-8a2433b21332" />
+<img width="1883" height="1015" alt="insights" src="https://github.com/user-attachments/assets/d20890c1-a64d-45f2-a8bb-2996a1d4239b" />
+
+#### Sorting and Searching
+<img width="1904" height="1008" alt="sorting and searching" src="https://github.com/user-attachments/assets/c90cbb99-f550-4160-8acd-11c089ecc77b" />
 
 
 ## 🔧 Troubleshooting

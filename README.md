@@ -14,23 +14,22 @@
 ---
 
 ## 📖 Table of Contents
-- [Overview](#overview)
-- [Architecture](#architecture)
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Prerequisites](#prerequisites)
-- [Installation & Setup](#installation--setup)
+- [Overview](#-overview)
+- [Architecture](#-architecture)
+- [Features](#-features)
+- [Tech Stack](#techstack)
+- [Prerequisites](#-prerequisites)
+- [Installation & Setup](#-installation--setup)
   - [Backend (Node.js)](#1-backend-core-service)
   - [Analytics (Python)](#2-analytics-service)
   - [Frontend (React)](#3-frontend-client)
-- [Running the Application](#running-the-application)
-- [Seeding Data](#seeding-data-optional)
-- [Screenshots](#screenshots)
-- [Troubleshooting](#troubleshooting)
-- [Author](#author)
+- [Running the Application](#-running-the-application)
+- [Seeding Data](#-seeding-data-optional)
+- [Screenshots](#-screenshots)
+- [Troubleshooting](#-troubleshooting)
+- [Author](#-author)
 
-
----
+---s
 
 ## 📖 Overview
 
@@ -68,7 +67,7 @@ QuickTask/
 
 - 📱 Responsive Design: Optimized for seamless use on desktop and mobile devices.
 
-## 🛠️ Tech Stack
+## 🛠️ Tech Stack <a id = "techstack"> </a>
 
 ### 1. Frontend
 - **Framework:** React (Vite)

@@ -52,46 +52,46 @@ QuickTask/
                  # Handles: Auth (JWT), Database (MongoDB), CRUD API
 ```
 ## 🚀 Features
-🔐 Secure Authentication: User Login & Registration powered by JWT & Bcrypt.
+- 🔐 Secure Authentication: User Login & Registration powered by JWT & Bcrypt.
 
-📝 Task Management: Full CRUD capabilities (Create, Read, Update, Delete).
+- 📝 Task Management: Full CRUD capabilities (Create, Read, Update, Delete).
 
-🔍 Advanced Filtering: Sort tasks by Priority, Date, or Status (Todo/In Progress/Completed).
+- 🔍 Advanced Filtering: Sort tasks by Priority, Date, or Status (Todo/In Progress/Completed).
 
-📊 Analytics Dashboard: Real-time metrics visualization (Completion Rates, Pending Tasks) powered by Python.
+- 📊 Analytics Dashboard: Real-time metrics visualization (Completion Rates, Pending Tasks) powered by Python.
 
-📱 Responsive Design: Optimized for seamless use on desktop and mobile devices.
+- 📱 Responsive Design: Optimized for seamless use on desktop and mobile devices.
 
 ## 🛠️ Tech Stack
 
 ### 1. Frontend
 - **Framework:** React (Vite)
 
-- Routing: React Router DOM
+- **Routing:** React Router DOM
 
-- HTTP Client: Axios
+- **HTTP Client:** Axios
 
-- Visualization: Recharts
+- **Visualization:** Recharts
 
-- Notifications: React-Toastify
+- **Notifications:** React-Toastify
 
 ### 2. Backend (Core)
-- Runtime: Node.js
+- **Runtime:** Node.js
 
-- Framework: Express.js
+- **Framework:** Express.js
 
-- Database: MongoDB (via Mongoose)
+- **Database:** MongoDB (via Mongoose)
 
-- Auth: JSON Web Token (JWT)
+- **Auth:** JSON Web Token (JWT)
 
 ### 3. Analytics Service
-- Language: Python 3.8+
+- **Language:** Python 3.8+
 
-- Framework: Flask
+- **Framework:** Flask
 
-- Driver: PyMongo
+- **Driver:** PyMongo
 
-- Utilities: Pandas, Python-Dotenv
+- **Utilities:** Pandas, Python-Dotenv
 
 ## 📋 Prerequisites
 Ensure you have the following installed on your machine:

@@ -10,10 +10,10 @@ from bson import ObjectId
 load_dotenv()
 
 app = Flask(__name__)
-# CORS(app)
+CORS(app)
 
 # Update CORS
-CORS(app, resources={r"/*": {"origins": ["http://localhost:5173", "https://quick-task-delta.vercel.app"]}})
+# CORS(app, resources={r"/*": {"origins": ["http://localhost:5173", "https://quick-task-delta.vercel.app"]}})
 
 # 2. Database Connection
 mongo_uri = os.getenv("MONGO_URI")

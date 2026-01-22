@@ -14,15 +14,15 @@ connectDB();
 const app = express();
 
 // Middleware
-// app.use(cors()); // Allows frontend to communicate with backend
+app.use(cors()); // Allows frontend to communicate with backend
 app.use(json()); // Allows the backend to understand JSON data
 app.use('/api/auth', authRoutes); // Auth Routes
 app.use('/api/tasks', taskRoutes); // Task Routes
 // Update CORS to allow your deployed frontend
-app.use(cors({
-  origin: ["http://localhost:5173", "https://quick-task-delta.vercel.app"],
-  credentials: true
-}));
+// app.use(cors({
+//   origin: ["http://localhost:5173", "https://quick-task-delta.vercel.app"],
+//   credentials: true
+// }));
 
 // A simple test route to ensure server is working
 app.get('/', (req, res) => {
@@ -30,19 +30,19 @@ app.get('/', (req, res) => {
 });
 
 //for local development
-// Start the Server
-// const PORT = process.env.PORT || 5000;
-// app.listen(PORT, () => {
-//   console.log(`Server running on port ${PORT}`);
-// });
+//Start the Server
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
 
 // for production deployment
-const PORT = process.env.PORT || 5000;
+// const PORT = process.env.PORT || 5000;
 
-// Only run the server if we are NOT in production (local development)
-if (process.env.NODE_ENV !== 'production') {
-    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-}
+// // Only run the server if we are NOT in production (local development)
+// if (process.env.NODE_ENV !== 'production') {
+//     app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// }
 
-// Export the app for Vercel
-export default app;
+// // Export the app for Vercel
+// export default app;

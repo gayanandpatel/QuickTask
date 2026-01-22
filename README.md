@@ -83,7 +83,7 @@ QuickTask/
 
 - Auth: JSON Web Token (JWT)
 
-### 3.Analytics Service
+### Analytics Service
 - Language: Python 3.8+
 
 - Framework: Flask

@@ -174,7 +174,7 @@ To run the full application, you need to open three separate terminal windows/ta
 ### Terminal 1: Core Backend
 ```bash
 cd server
-npm start
+node server.js
 # Runs on: http://localhost:5000
 ```
 ### Terminal 2: Analytics Service
@@ -187,6 +187,7 @@ python app.py
 ### Terminal 3: Frontend Client
 ```bash
 cd client
+cd my-react-app
 npm run dev
 # Runs on: http://localhost:5173
 ```

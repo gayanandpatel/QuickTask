@@ -6,24 +6,30 @@ import os
 from dotenv import load_dotenv
 from bson import ObjectId
 
-# 1. Flask App Setup
+# 1. Load Environment Variables
 load_dotenv()
 
 app = Flask(__name__)
-CORS(app) # Allow cross-origin requests (crucial for React)
+CORS(app)
 
 # 2. Database Connection
-# We connect to the SAME database as the Node backend
-client = MongoClient(os.getenv("MONGO_URI"))
-db = client.get_database()
+mongo_uri = os.getenv("MONGO_URI")
+client = MongoClient(mongo_uri)
+
+try:
+    db = client.get_database()
+except:
+    db = client['prepnec_db']
+
 tasks_collection = db.tasks
 
 @app.route('/', methods=['GET'])
 def home():
     return "Analytics Service is Running..."
 
-# Endpoint 1: User Task Statistics
-# GET /api/stats/user?userId=12345
+# ==========================================
+# ENDPOINT 1: User Stats (Totals & Pie Chart Data)
+# ==========================================
 @app.route('/api/stats/user', methods=['GET'])
 def get_user_stats():
     user_id = request.args.get('userId')
@@ -32,25 +38,40 @@ def get_user_stats():
         return jsonify({"error": "userId is required"}), 400
 
     try:
-        # filter by userId
         query = {"userId": ObjectId(user_id)}
         
-        # Count totals
+        # Basic Counts
         total_tasks = tasks_collection.count_documents(query)
         completed_tasks = tasks_collection.count_documents({**query, "status": "Completed"})
         pending_tasks = total_tasks - completed_tasks
+
+        # Priority Counts (For Pie Chart)
+        high_priority = tasks_collection.count_documents({**query, "priority": "High"})
+        medium_priority = tasks_collection.count_documents({**query, "priority": "Medium"})
+        low_priority = tasks_collection.count_documents({**query, "priority": "Low"})
+
+        completion_rate = 0
+        if total_tasks > 0:
+            completion_rate = round((completed_tasks / total_tasks * 100), 2)
 
         return jsonify({
             "totalTasks": total_tasks,
             "completedTasks": completed_tasks,
             "pendingTasks": pending_tasks,
-            "completionRate": round((completed_tasks / total_tasks * 100), 2) if total_tasks > 0 else 0
+            "completionRate": completion_rate,
+            "byPriority": {
+                "High": high_priority,
+                "Medium": medium_priority,
+                "Low": low_priority
+            }
         })
     except Exception as e:
-        return jsonify({"error": str(e)}), 500
+        print(f"Error in user stats: {e}")
+        return jsonify({"error": "Internal Server Error"}), 500
 
-# Endpoint 2: Productivity Trend (Last 7 Days)
-# GET /api/stats/productivity?userId=12345
+# ==========================================
+# ENDPOINT 2: Stacked Bar Chart Data (Last 7 Days)
+# ==========================================
 @app.route('/api/stats/productivity', methods=['GET'])
 def get_productivity_stats():
     user_id = request.args.get('userId')
@@ -59,36 +80,63 @@ def get_productivity_stats():
         return jsonify({"error": "userId is required"}), 400
 
     try:
-        # Calculate date 7 days ago
-        seven_days_ago = datetime.utcnow() - timedelta(days=7)
+        # 1. Calculate the date 7 days ago
+        seven_days_ago = datetime.utcnow() - timedelta(days=6) # 6 days ago + today = 7 days
 
-        # Pipeline to group completed tasks by date
+        # 2. Aggregation Pipeline
+        # We match ALL tasks from last 7 days (not just completed)
         pipeline = [
             {
                 "$match": {
                     "userId": ObjectId(user_id),
-                    "status": "Completed",
-                    "createdAt": {"$gte": seven_days_ago} # Using createdAt as proxy for completion time
+                    "createdAt": {"$gte": seven_days_ago}
                 }
             },
             {
                 "$group": {
-                    "_id": { "$dateToString": { "format": "%Y-%m-%d", "date": "$createdAt" } },
+                    "_id": { 
+                        "date": { "$dateToString": { "format": "%Y-%m-%d", "date": "$createdAt" } },
+                        "status": "$status"
+                    },
                     "count": { "$sum": 1 }
                 }
-            },
-            { "$sort": { "_id": 1 } } # Sort by date ascending
+            }
         ]
 
-        data = list(tasks_collection.aggregate(pipeline))
-        
-        # Format for frontend (Recharts usually likes simple arrays)
-        formatted_data = [{"date": item["_id"], "completed": item["count"]} for item in data]
+        raw_data = list(tasks_collection.aggregate(pipeline))
 
-        return jsonify(formatted_data)
+        # 3. Restructure Data for Stacked Bar Chart
+        # Goal: [{"date": "2023-10-01", "Todo": 2, "In Progress": 1, "Completed": 5}, ...]
+        
+        # Initialize a dictionary for the last 7 days with 0 counts
+        stats_by_date = {}
+        for i in range(7):
+            d = (datetime.utcnow() - timedelta(days=i)).strftime("%Y-%m-%d")
+            stats_by_date[d] = {
+                "date": d, 
+                "Todo": 0, 
+                "In Progress": 0, 
+                "Completed": 0
+            }
+
+        # Fill in the actual data from MongoDB
+        for item in raw_data:
+            date_str = item['_id']['date']
+            status = item['_id']['status']
+            count = item['count']
+            
+            # Only update if the date is within our 7-day window
+            if date_str in stats_by_date:
+                stats_by_date[date_str][status] = count
+
+        # Convert to list and sort by date
+        final_data = sorted(stats_by_date.values(), key=lambda x: x['date'])
+
+        return jsonify(final_data)
     except Exception as e:
-        return jsonify({"error": str(e)}), 500
+        print(f"Error in productivity stats: {e}")
+        return jsonify({"error": "Internal Server Error"}), 500
 
 if __name__ == '__main__':
-    # Run on a different port (5001) to avoid conflict with Node (5000)
-    app.run(debug=True, port=int(os.getenv("PORT", 5001)))
+    port = int(os.getenv("PORT", 5001))
+    app.run(debug=True, port=port)

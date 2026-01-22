@@ -111,7 +111,7 @@ Ensure you have the following installed on your machine:
 ## ⚙️ Installation & Setup <a id = "installation"> </a>
 Clone the repository to get started:
 ```bash
-git clone [https://github.com/gayanandpatel/QuickTask.git](https://github.com/gayanandpatel/QuickTask.git)
+git clone https://github.com/gayanandpatel/QuickTask.git
 cd QuickTask
 ```
 ### 1. 🖥️ Backend (Node.js) Setup <a id = "backend-node"> </a>

@@ -9,9 +9,6 @@
 **A robust, microservices-based task management application.**
 <br />
 *Featuring a Node.js/Express backend, React frontend, and a dedicated Python service for data analytics.*
-
-[Overview](#-overview) • [Architecture](#-architecture) • [Features](#-features) • [Setup](#-installation--setup) • [Troubleshooting](#-troubleshooting)
-
 </div>
 
 ---
@@ -31,34 +28,6 @@
 - [Screenshots](#-screenshots)
 - [Troubleshooting](#-troubleshooting)
 - [Author](#-author)
-
----
-
-## 📖 Overview
-
-**QuickTask** is designed to help users efficiently manage daily tasks while gaining meaningful insights through analytics. Unlike standard Todo apps, QuickTask employs a **microservices architecture**:
-
-1.  **Core Service (Node.js):** Handles authentication, database management, and CRUD operations.
-2.  **Analytics Service (Python):** Performs heavy data aggregation, statistical calculations, and visualizations.
-3.  **Client (React):** A responsive, modern UI that consumes both services.
-
----
-
-## 🏗 Architecture
-
-The project is structured into three distinct directories to maintain strict separation of concerns:
-
-```bash
-QuickTask/
-│
-├── analytics/   # 🐍 Python Microservice (Flask + PyMongo)
-│                # Handles: Data visualization logic, trend analysis
-│
-├── client/      # ⚛️ Frontend Application (React + Vite)
-│                # Handles: User Interface, Charts (Recharts), State
-│
-└── server/      # 🟢 Backend API (Node.js + Express)
-                 # Handles: Auth (JWT), Database (MongoDB), CRUD API
 
 ---
 

@@ -63,6 +63,7 @@ QuickTask/
 📱 Responsive Design: Optimized for seamless use on desktop and mobile devices.
 
 ## 🛠️ Tech Stack
+
 ### 1. Frontend
 - **Framework:** React (Vite)
 

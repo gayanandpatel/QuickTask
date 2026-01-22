@@ -12,7 +12,7 @@
 - [Overview](#-overview)
 - [Architecture](#-architecture)
 - [Features](#-features)
-- [Tech Stack](#-%EF%B8%8F-tech-stack)
+- [Tech Stack](#-tech-stack)
 - [Prerequisites](#-prerequisites)
 - [Installation & Setup](#-%EF%B8%8F-installation--setup)
   - [1. Backend (Node.js)](#1-%EF%B8%8F-backend-nodejs-setup)

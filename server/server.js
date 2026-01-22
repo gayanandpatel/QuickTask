@@ -24,8 +24,20 @@ app.get('/', (req, res) => {
   res.send('API is running...');
 });
 
+//for local development
 // Start the Server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
+// for production deployment
+// const PORT = process.env.PORT || 5000;
+
+// // Only run the server if we are NOT in production (local development)
+// if (process.env.NODE_ENV !== 'production') {
+//     app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// }
+
+// // Export the app for Vercel
+// export default app;

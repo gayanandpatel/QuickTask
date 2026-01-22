@@ -1,5 +1,9 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+
+// Define the URL logic at the top of the component or outside
+const ANALYTICS_URL = import.meta.env.VITE_ANALYTICS_URL || 'http://localhost:5001/api';
+
 import { 
   BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend,
   PieChart, Pie, Cell 
@@ -15,11 +19,13 @@ const Analytics = ({ refreshTrigger }) => {
     const fetchData = async () => {
       try {
         // Fetch User Stats
-        const statsRes = await axios.get(`http://localhost:5001/api/stats/user?userId=${userId}`);
+        // const statsRes = await axios.get(`http://localhost:5001/api/stats/user?userId=${userId}`);
+        const statsRes = await axios.get(`${ANALYTICS_URL}/stats/user?userId=${userId}`);
         setStats(statsRes.data);
 
         // Fetch Productivity Trend
-        const trendRes = await axios.get(`http://localhost:5001/api/stats/productivity?userId=${userId}`);
+        // const trendRes = await axios.get(`http://localhost:5001/api/stats/productivity?userId=${userId}`);
+        const trendRes = await axios.get(`${ANALYTICS_URL}/stats/productivity?userId=${userId}`);
         setTrend(trendRes.data);
       } catch (error) {
         console.error("Analytics Error:", error);
